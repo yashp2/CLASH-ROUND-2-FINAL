@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RC Login Page</title>
+    
+    <link rel="stylesheet" href="..\static\css\loginPage.css">
+    <link rel="stylesheet" href="https://pin.it/4Gg9K8u">
+
+<!-- fontawsome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+<!-- <style> -->
+
+</head>
+<body>
+    
+    <!-- this is container for containing entire loginbox inside container -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #010718; "
+    <a class="navbar-brand" href="#">
+        <a href="" style="color: white; text-decoration: none; font-weight: 700; font-size: 22px;">Clash</a>
+        <!-- <img src="images/clash.png" alt="Bootstrap" width="50" height="30" class="d-inline-block align-top"> -->
+    </a>
+    <button 
+    class="navbar-toggler" 
+    type="button" 
+    data-bs-toggle="collapse" 
+    data-bs-target="#toggleMobileMenu" 
+    aria-controls="toggleMobileMenu" 
+    aria-expanded="false" 
+    aria-label="Toggle navigation"
+    >
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    </nav>
+<div class="collapse navbar-collapse" id="toggleMobileMenu">
+    
+    <ul class="navbar-nav ms-auto text-center">
+        <li>
+            <a class="nav-link" href="#">Instructions</a>
+        </li>
+        <li>
+            <a class="nav-link" href="#">Leaderboard</a>
+        </li>
+        <li>
+            <a class="nav-link" href="#">Logout</a>
+        </li>
+        
+    </ul>
+    
+    
+</div>
+</nav>
+
+    <div class="container">
+        <div class="loginbox">
+            <img src="../static/img/avatar.png" class="avatar">
+            <!-- added stroke width to medium and added color only for now -->
+            <h2>Login Here</h2>
+            <form method="post" action="{% url 'login' %}" autocomplete="off">
+                <!-- <h4>Username</h4> -->
+                <!-- here used form-floating from bootstrap-5 and class form-control from bootstrap, both of them must be there for floating label to work -->
+                {% csrf_token %}
+                <div class="input-group form-floating mb-3 mt-4 ">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Enter Username" class="form-control " id="floatingInput" autocomplete="off" required>
+                    <label for="floatingInput">Email address</label>
+                </div>
+
+                <!-- <h4>Password</h4>-->
+                <!-- <div class="row"> -->
+                
+                <div class="input-group form-floating mb-3 ">
+                    {% csrf_token %}  
+                    <input type="password" placeholder="Enter Password"  class="form-control" id="myPass" required>
+                    <label for="myPass">Password</label>
+                </div>
+                <!-- </div> -->
+                <!-- <br> -->
+                <div class="myradio">
+                    <div class="form-check form-check-inline">
+                        
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+                        <label class="form-check-label" for="inlineRadio1">Junior</label>
+                      </div>
+                      
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                        <label class="form-check-label" for="inlineRadio2">Senior</label>
+                      </div>
+                </div>
+                <!-- <input type="submit" name="" value="Login"> -->
+                <br>
+                <!-- using my-btn and my-btn-primary to avoid blue outlines of bootstrap buttons -->
+                <!-- <button type="button" class="my-btn my-btn-primary mybutton">Login</button> -->
+                <div class="mybtns">
+                    {% csrf_token %}
+                    <button class="cybr-btn">Login<span aria-hidden>_</span>
+                        <span aria-hidden class="cybr-btn__glitch">Login</span>
+                        <!-- <span aria-hidden class="cybr-btn__tag">R25</span> -->
+                    </button>
+                    <!-- <div class="alert alert-danger" role="alert">
+                        This is a danger alert—check it out!
+                    </div> -->
+                </div>
+
+                {% for i in messages %}
+                <h4>
+                Message : {{i}}
+                </h4>
+                {% endfor %}
+            </form>
+            <!-- <div class="alert d-flex alert-danger mx-auto fade show p-1 justify-content-between" style="width: 90%;"  role="alert">
+                Invalid Password
+                <button type="button" data-dismiss="alert" class="btn-close my-auto" style="height:  0.7rem; width: 0.7rem;"></button>
+            </div> -->
+            <script src="../static/js/loginPage.js"></script>
+        </div>
+        <img src="../static/img/clive_blue.png" class="mylogoss">
+        <!-- </div>   -->
+    </div>          
+    <footer class="fixed-bottom">
+        <div class="leftieee">
+          © PICT IEEE Student Branch
+        </div>
+        <div class="middleieee">
+          Credenz'21 | Made with ❤️ by <a href="#" style="color: white; text-decoration: none;">PISB Web Team</a>
+        </div>
+        <div class="lastieee">
+          <div class = "social-links">
+        
+            <a><i class="fa fa-linkedin" ></i></a>
+            <a href = "#"><span></span><i class = "fa fa-youtube-play"></i></a>
+            <a href = "#"><i class = "fa fa-instagram"></i></a>
+        
+          </div>
+        </div>
+    
+      </footer> 
+</body>
+</html>

@@ -1,0 +1,59 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Instructions</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/css/instructions.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+</head>
+<script>
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
+</script>
+<body style="background-color:#01012b">
+    <h2>Hello {{user.first_name}} !</h2>
+    <div class="container-1">
+        <div style="text-align: center;border-radius: 10px; background-color: #0C2340; color: black;    box-shadow: 2px 2px 4px black; padding-top: 20px; padding-bottom: 20px;" >
+            <h1 class="title">INSTRUCTIONS</h1>
+            <p style="font-family: 'Orbitron', sans-serif !important; color: turquoise;">Lorem ipsum dolor, <br>sit amet consectetur adipisicing elit. Quis <br>voluptatem voluptates mollitia magnam doloribus<br> accusamus alias et perferendis<br> veritatis pariatur! Enim, totam nisi! Est, <br>hic odit iusto ratione quo eveniet.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="main-timeline5">
+                    <div class="timeline">
+                        <div class="timeline-icon"><span class="year">1</span></div>
+                        <div class="timeline-content" style="    box-shadow:2px 2px 4px black ;border-radius: 10px;">
+                            <h3 class="title">Life Line 1</h3>
+                            <p class="description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-icon"><span class="year">2</span></div>
+                        <div class="timeline-content" style="    box-shadow:2px 2px 4px turquoise ;border-radius: 10px;">
+                            <h3 class="title">Life Line 2</h3>
+                            <p class="description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
+                            </p>
+                        </div>
+                    </div>
+                    <div style="text-align: center;"><a href="{% url 'start' %}">
+                        <button type="button" class="mt-4 btn" style="color: turquoise; background-color: #0C2340; box-shadow: 2px 2px  4px turquoise; font-size: 30px;    font-family: 'Orbitron', sans-serif !important;
+                        ">Proceed</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
