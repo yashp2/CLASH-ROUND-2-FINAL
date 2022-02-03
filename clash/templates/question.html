@@ -152,10 +152,11 @@
       </div>
     </div>
 
-    <form action="{%url 'clash-sub' ques.id%}" method='post'>
-      {%csrf_token%}
+    
       <div class="rcont">
       <!-- <form action="" method="post"> -->
+        <form action="{%url 'clash-sub' ques.id%}" method='post'>
+          {%csrf_token%}
       <div class="rcontup">
         <div>
           <select name="language" id="textformat" class="langchoose" onchange="fnchange()">

@@ -67,7 +67,7 @@ def contest(request):
             l_status.append(status)
     mylist = zip(ques, l_status)
     print("hello")
-    return render(request, "contest.html", {"mylist": mylist})
+    return render(request, "trial1.html", {"mylist": mylist})
 
 
 @login_required
