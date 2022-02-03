@@ -1,0 +1,272 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  text-align: center;
+  background-color: #131313;
+  color: white;
+  overflow-x: hidden;
+  margin-bottom: 50px; /* Margin bottom by footer height */
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 65px; /* Set the fixed height of the footer here */
+  background-color: #f5f5f5;
+}
+
+.navbar {
+  background-color: #1f2833;
+}
+
+.maincard {
+  margin-top: 30%;
+  margin-left: 10%;
+  text-align: center;
+  height: 300px;
+  border-radius: 25px;
+  box-shadow: 2px 2px 10px #000000;
+  background-color: #222222;
+  font-size: x-large;
+  border: 2px solid #000000;
+}
+
+.rank {
+  background-color: #222222;
+  color: white;
+  border: 1px solid #000000;
+  font-size: 15px;
+}
+
+.score {
+  background-color: #222222;
+  color: white;
+  border: 1px solid #000000;
+  font-size: 15px;
+}
+.page-link {
+  background-color: #293b5f;
+  color: rgb(255, 255, 255);
+}
+.circle {
+  background-color: #293b5f;
+  border: 1px solid #000000;
+  border-radius: 50px;
+  padding: 10px;
+  width: 70px;
+  height: 70px;
+  /* margin-left: 40%; */
+  font-size: xx-large;
+}
+
+.first {
+  margin-top: 5px;
+  background-color: #222222;
+}
+
+.table {
+  min-width: fit-content;
+  width: 100%;
+  margin-top: 35px;
+  margin-right: 10px;
+  border: 2px solid #000000;
+  box-shadow: 0px 5px 20px 2px #000000;
+  background-color: #222222;
+  color: white;
+  font-size: 15px;
+  margin-right: 20%;
+}
+
+.pagination {
+  justify-content: center;
+  color: white;
+}
+
+.footer {
+  background-color: #1f2833;
+}
+
+.maincnt {
+  height: calc(100vh - 92px);
+}
+/*
+@media (max-width:768px)
+{
+    .maincard{
+    margin-left: 10%;
+    text-align:center;
+    height:300px;
+    border-radius: 25px;
+    box-shadow: 0px 1px 4px #16873d;
+    width:100%;
+    font-size: x-large;
+    }
+    .first{
+        margin-top: 5px;
+        background-color:#2e353e;
+        
+    }
+    .rank{
+        background-color:#2e353e;
+        color:white;
+        border: 1px solid #192626;
+        font-size :15px;
+    }
+    
+    .score{
+        background-color:#2e353e;
+        color:white;
+        border: 1px solid #192626;
+        font-size:15px;
+    }
+    
+    .table{
+        width:100%;
+        margin-top: 20px;
+        border: 2px solid #16873d;
+        box-shadow: 0px 5px 20px 2px #16873d;
+        background-color:#2e353e;
+        color:white;
+        margin-right: 20%;
+
+    }
+}
+
+@media (max-width:375px)
+{
+    .maincard{
+    margin-left: 15%;
+    margin-top: 20%;
+    width:300px;
+    text-align:center;
+    height:300px;
+    border-radius: 25px;
+    box-shadow: 0px 1px 4px #16873d;
+
+    }
+    .first{
+        margin-top: 5px;
+        background-color:#2e353e;
+        
+    }
+    .rank{
+        background-color:#2e353e;
+        color:white;
+        border: 1px solid #192626;
+        font-size :15px;
+    }
+    
+    .score{
+        background-color:#2e353e;
+        color:white;
+        border: 1px solid #192626;
+        font-size:15px;
+    }
+    
+    .table{
+        width:100%;
+        margin-top: 20px;
+        border: 2px solid #16873d;
+        box-shadow: 0px 5px 20px 2px #16873d;
+        background-color:#2e353e;
+        color:white;
+        margin-right: 20%;
+
+    }
+}
+*/
+@media (max-width: 768px) {
+  .rank {
+    font-size: 1.7vw;
+    height: 100px;
+    margin: 4px;
+    margin-bottom: 20px;
+    margin-left: 25%;
+    width: 50%;
+  }
+  .score {
+    font-size: 1.7vw;
+    height: 100px;
+    margin: 4px;
+    margin-left: 25%;
+    margin-bottom: 20px;
+    width: 50%;
+  }
+
+  .maincard {
+    margin-top: 30%;
+    /* margin-left: 25%; */
+    /* margin-left: 10%; */
+    text-align: center;
+    height: 400px;
+    border-radius: 25px;
+    box-shadow: 2px 2px 10px black;
+  }
+  .table {
+    /* width:100%; */
+    /* overflow-x: hidden; */
+    margin-right: 20px;
+  }
+  .circle {
+    margin-left: 45%;
+  }
+  .maincnt {
+    height: auto;
+  }
+}
+
+@media (max-width: 980px) {
+  .rank {
+    font-size: 1.7vw;
+    height: 100px;
+    margin: 4px;
+    margin-bottom: 20px;
+
+    width: 100%;
+  }
+  .score {
+    font-size: 1.7vw;
+    height: 100px;
+    margin: 4px;
+
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .maincnt {
+    height: auto;
+  }
+}
+@media (max-width: 375px) {
+  .maincard {
+    margin-left: 15%;
+    margin-top: 20%;
+    width: 300px;
+    text-align: center;
+    height: 300px;
+    border-radius: 25px;
+  }
+  .first {
+    margin-top: 5px;
+  }
+  .rank {
+    font-size: 15px;
+  }
+
+  .score {
+    font-size: 15px;
+  }
+
+  .table {
+    width: 100%;
+    margin-top: 20px;
+    margin-right: 20%;
+  }
+
+  .maincnt {
+    height: auto;
+  }
+}

@@ -1,0 +1,478 @@
+body{
+  background-color: #131313;
+}
+
+#navbar{
+background-color: #1F2833;
+}
+
+.navvi{
+color: rgb(255, 255, 255);
+}
+
+#footer{
+background: #1F2833;
+color: white;
+}
+
+
+
+.mid-align{
+  text-align: center;
+}
+.msg{
+  height: 90px;
+  background-color: #126E82;
+  content: none;
+  color: white;
+  transform: rotate(-5deg);
+  border-radius: 25%;
+  border: 0px transparent red;
+  margin: -10px;
+  box-shadow: #131313 10px 5px 0px 0px;
+}
+.tip{
+  height: 50px;
+  width: 50px;
+  margin: -35px;
+  content: none;
+  background-color: #126E82;
+  transform: rotate(-45deg);
+  border: 0px solid red;
+  position: absolute;
+  box-shadow: rgb(0,0,0 / 60%) 15px 7px 0px 0px;
+}
+
+.down_bor{
+  border-bottom: 1px dashed #126E82;
+}
+
+.down_bor2{
+  border-bottom: 4px solid #126E82;
+}
+
+.font_wt{
+  font-weight: bold;
+  /*font-size:30px;*/
+}
+
+.box{
+   
+border-radius: 10px;
+color: white;
+background:#222222 ;
+box-shadow: 2px 2px 5px 2px #000000,-2px -2px 5px 2px #000000 ;
+}
+
+#one{
+  margin: 10px  0px;
+  border-radius: 50px;
+  background: #222222 ;
+  color: white;
+  border: 2px solid #126E82;
+  
+}
+#one2{
+  margin: 10px  0px;
+  margin-bottom: 5px;
+  /*border-radius: 50px;*/
+  /*background: #293B5F ;*/
+  color: white;
+  /*border: 2px solid #66FCF1;*/
+  font-size:larger;
+  font-weight:bold;
+}
+
+
+
+
+
+#bor{
+  text-align: center;
+  color: white;
+}
+.top{
+  padding-bottom: 175px;
+  padding-left: 50px;
+  padding-right: 50px;
+  position: relative;
+  content: none;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  background-color: #c8d6e5;
+  margin-top: 10px;
+}
+.first{
+  content:none;
+  
+  height:100px;
+  
+}
+.second{
+  content:none;
+  height:100px;
+}
+.third{
+  content:none;
+  height:100px;
+}
+.round-border{
+border: 2px solid white;
+border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+/*
+ * ribbon medallion 1
+ */
+
+.award-ribbonone {
+  position: relative;
+  margin: 25px auto 75px;
+  height: 152px;
+  width: 152px;
+
+  /* make it a circle */
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+
+  /* some rendering stuff */
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+
+  /* border box */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  /* background color/gradient/whatever */
+ 
+  background: -moz-linear-gradient(45deg,#f9ca24 29%, #e9d46f 46%,#f7e485 62%,#f3c41b  96%);
+  background: -webkit-linear-gradient(45deg, #f9ca24 29%,#e9d46f 46%, #f7e485 62%, #f3c41b  96%);
+  background: linear-gradient(45deg, #f9ca24  29%, #e9d46f 46%, #f7e485 62%, #f3c41b 96%);
+
+  /* adding dimension */
+  -webkit-box-shadow: inset 0px 0px 100px rgba(0, 0, 0, 0.2), 0px 0px 0px 10px #ffaf40 , 0px 10px 30px 0px rgba(0, 0, 0, 0.9);
+  -moz-box-shadow: inset 0px 0px 100px rgba(0, 0, 0, 0.2), 0px 0px 0px 10px #ffaf40, 0px 10px 30px 0px rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0px 0px 100px rgba(0, 0, 0, 0.2), 0px 0px 0px 10px #ffaf40, 0px 10px 30px 0px rgba(0, 0, 0, 0.9);
+}
+
+
+/*
+ * text element
+ */
+
+.award-ribbonone .award-ribbonone-text {
+
+  padding: 15px;
+  display: block;
+  width: 100%;
+  
+  /* vertical centering */
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  
+  /* border box */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  
+  /* text styling */
+  color: #ffffff;
+  font-size: 1.2em;
+  line-height: 1;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.5);
+}
+
+
+/*
+ * inner and outer ribbon pseudo elements
+ */
+
+.award-ribbonone:before,
+.award-ribbonone:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  z-index: -1;
+  /* length of the ribbon */
+  padding-top: 160px;
+}
+
+
+/* 
+ * inner ribbon
+ */
+
+.award-ribbonone:before {
+  top: 45px;
+  left: 15px;
+  border-color: transparent #ff9f1a transparent #ff9f1a;
+  border-width: 0px 60px 35px;
+  border-style: solid;
+}
+
+
+/* 
+ * outer ribbon (edges)
+ */
+
+.award-ribbonone:after {
+  top: 30px;
+  left: 25px;
+  border-color: transparent #ffc048 transparent #ffc048 ;
+  border-width: 0px 50px 30px;
+  border-style: solid;
+}
+
+
+
+
+
+
+/*
+ * ribbon medallion 2
+ */
+
+ .award-ribbontwo {
+  font-family: Helvetica, Arial, sans-serif;
+  position: relative;
+  margin: 25px auto 75px;
+  height: 152px;
+  width: 152px;
+
+  /* make it a circle */
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+
+  /* some rendering stuff */
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+
+  /* border box */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  /* background color/gradient/whatever */
+  background: #27ae60;
+  background: -moz-linear-gradient(45deg, #95a5a6 19%, #95a5a6 36%,#c8cdce 52%,#95a5a6  96%);
+  background: -webkit-linear-gradient(45deg, #95a5a6 19%, #95a5a6 36%, #c8cdce 52%, #95a5a6 96%);
+  background: linear-gradient(45deg, #95a5a6 19%, #95a5a6 36%, #c8cdce 52%,#95a5a6 96%);
+
+  /* adding dimension */
+  -webkit-box-shadow: inset 0px 0px 100px rgba(0, 0, 0, 0.2), 0px 0px 0px 10px #7f8c8d, 0px 10px 30px 0px rgba(0, 0, 0, 0.9);
+  -moz-box-shadow: inset 0px 0px 100px rgba(0, 0, 0, 0.2), 0px 0px 0px 10px #7f8c8d, 0px 10px 30px 0px rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0px 0px 100px rgba(0, 0, 0, 0.2), 0px 0px 0px 10px #7f8c8d, 0px 10px 30px 0px rgba(0, 0, 0, 0.9);
+}
+
+/*
+ * text element
+ */
+
+.award-ribbontwo .award-ribbontwo-text {
+
+  padding: 15px;
+  display: block;
+  width: 100%;
+  
+  /* vertical centering */
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  
+  /* border box */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  
+  /* text styling */
+  color: #ffffff;
+  font-size: 1.2em;
+  line-height: 1;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.5);
+}
+
+
+/*
+ * inner and outer ribbon pseudo elements
+ */
+
+.award-ribbontwo:before,
+.award-ribbontwo:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  z-index: -1;
+  /* length of the ribbon */
+  padding-top: 160px;
+}
+
+
+/* 
+ * inner ribbon
+ */
+
+.award-ribbontwo:before {
+  top: 45px;
+  left: 15px;
+  border-color: transparent #95a5a6 transparent #95a5a6;
+  border-width: 0px 60px 35px;
+  border-style: solid;
+}
+
+
+/* 
+ * outer ribbon (edges)
+ */
+
+.award-ribbontwo:after {
+  top: 30px;
+  left: 25px;
+  border-color: transparent#bdc3c7 transparent #bdc3c7;
+  border-width: 0px 50px 30px;
+  border-style: solid;
+}
+
+
+
+
+
+
+/*
+ * ribbon medallion 3
+ */
+
+ .award-ribbonthree {
+  font-family: Helvetica, Arial, sans-serif;
+  position: relative;
+  margin: 25px auto 75px;
+  height: 152px;
+  width: 152px;
+
+  /* make it a circle */
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+
+  /* some rendering stuff */
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+
+  /* border box */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  /* background color/gradient/whatever */
+  background: #27ae60;
+  background: -moz-linear-gradient(45deg, #d17261 23%, #d17362 36%, #f1947c 52%,#df6c4f  96%);
+  background: -webkit-linear-gradient(45deg, #d17261 23%, #d17362  36%, #f1947c 52%, #df6c4f 96%);
+  background: linear-gradient(45deg, #d17261 23%, #d17362  36%,#f1947c 52%, #df6c4f 96%);
+
+  /* adding dimension */
+  -webkit-box-shadow: inset 0px 0px 100px rgba(0, 0, 0, 0.2), 0px 0px 0px 10px #C46857, 0px 10px 30px 0px rgba(0, 0, 0, 0.9);
+  -moz-box-shadow: inset 0px 0px 100px rgba(0, 0, 0, 0.2), 0px 0px 0px 10px #C46857 , 0px 10px 30px 0px rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0px 0px 100px rgba(0, 0, 0, 0.2), 0px 0px 0px 10px #C46857, 0px 10px 30px 0px rgba(0, 0, 0, 0.9);
+}
+
+/*
+ * text element
+ */
+
+.award-ribbonthree .award-ribbonthree-text {
+
+  padding: 15px;
+  display: block;
+  width: 100%;
+  
+  /* vertical centering */
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  
+  /* border box */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  
+  /* text styling */
+  color: #ffffff;
+  font-size: 1.2em;
+  line-height: 1;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.5);
+}
+
+
+/*
+ * inner and outer ribbon pseudo elements
+ */
+
+.award-ribbonthree:before,
+.award-ribbonthree:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  z-index: -1;
+  /* length of the ribbon */
+  padding-top: 160px;
+}
+
+
+/* 
+ * inner ribbon
+ */
+
+.award-ribbonthree:before {
+  top: 45px;
+  left: 15px;
+  border-color: transparent #d66e5c transparent #d66e5c;
+  border-width: 0px 60px 35px;
+  border-style: solid;
+}
+
+
+/* 
+ * outer ribbon (edges)
+ */
+
+.award-ribbonthree:after {
+  top: 30px;
+  left: 25px;
+  border-color: transparent #eb8166 transparent #eb8166;
+  border-width: 0px 50px 30px;
+  border-style: solid;
+}
