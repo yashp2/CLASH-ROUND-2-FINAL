@@ -119,6 +119,7 @@ def san_saf_error(error,language):
 @login_required
 @timer
 def clash_sub(request, pk):
+    print(request.POST)
     que = Question.objects.get(pk=pk)
     tester = Player.objects.get(user=request.user)
     tc_count = 0

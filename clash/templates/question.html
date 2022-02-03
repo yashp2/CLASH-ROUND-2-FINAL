@@ -186,6 +186,8 @@
         </div>
       </div>
 
+      <textarea name="input" id="w3revi" cols="50" rows="4"></textarea>
+
       <div style=" display: block;" class="codeeditdiv" media="screen">
         <div id="editor" media="screen">
           
@@ -228,17 +230,19 @@
                 <div class="cio">
                   <div class="ciod">
                     <h5>Custom Input:</h5>
-                    <textarea name="Custominput" id="custominput" rows="6"></textarea>
+                    <textarea name="custom_input" id="custom_input" rows="6">{{input}}</textarea>
                   </div>
                   <div class="ciod">
                     <h5>Output:</h5>
-                    <textarea name="output" id="output" rows="6" readonly></textarea>
+                    <textarea name="display" id="output" rows="6" readonly>{{output}}</textarea>
                   </div>
                 </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary modalclosebtn" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success modalrunbtn"><i class="fas fa-play"></i> Run</button>
+                <button value="Go" name="cust" type="submit">Submit</button>
+
+                <!-- <button type="button" class="btn btn-success modalrunbtn" name="cust"><i class="fas fa-play"></i> Run</button> -->
               </div>
             </div>
           </div>
