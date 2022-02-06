@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">   
+
+    <title>Home</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="{%url 'clash-home'%}" class="navbar-brand">Clash</a>
+        <a href="{%url 'rc-home'%}" class="navbar-brand">RC</a>
+        <a href="#" class="navbar-brand">Timer</a>
+
+        <div class="navbar">
+            <a class="nav-item nav-link" href="{%url 'rc-leaderboard'%}">LeaderBoard</a>
+            <a class="nav-item nav-link" href="{%url 'rc-home'%}"> Home </a>
+            <a class="nav-item nav-link" href="{%url 'rc-contest'%}">Questions </a>
+            <a class="nav-item nav-link" href="{%url 'logout'%}">Logout </a>
+
+        </div>
+
+    </nav>
+    {% block body %}
+    <h1>body of RC-home page</h1>
+
+        {%if user1%}
+        {{user1.username}} -- logged in
+        {%endif%}
+        <br>
+        {%for questions  in que%}
+        {{questions.q_id}} -- {{questions.title}} -- <a href="#">Attempt</a>
+        <br>
+        {%endfor%}
+        
+    {% endblock %}
+</body>
+</html>

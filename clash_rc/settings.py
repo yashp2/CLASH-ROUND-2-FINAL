@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-vop+%o)edft_&f#$i)rwa(-x)#zsygzu)6%ahvwa@&50gs4e&4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+EBUG = FalseALLOWED_HOSTS = ['*']
 
 
 # Application definition
