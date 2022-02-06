@@ -144,7 +144,10 @@
   box-shadow: 4px 4px #000000;
   color: white;
 }
-
+.modebtns:hover{
+  color: white;
+  cursor: pointer;
+}
 .ace-dracula {
   background-color: transparent;
 }

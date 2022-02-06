@@ -9,6 +9,7 @@ from sandbox import views
 from django.db.models import Q
 from datetime import datetime
 import re
+from django.http import JsonResponse
 
 
 signals = {
@@ -66,7 +67,7 @@ def contest(request):
             status = "Not Attempted"
             l_status.append(status)
     mylist = zip(ques, l_status)
-    print("hello")
+    # print("hello")
     return render(request, "trial1.html", {"mylist": mylist})
 
 
@@ -128,13 +129,15 @@ def clash_sub(request, pk):
     language = request.POST.get("language")
     s = ""
     if request.method == "POST":
-        custom=False
+        custom=True
         for key in request.POST:
-            if(key=="cust"):
-                custom=True
+            print(key)
+            if(key=="normal"):
+                custom=False
         if(custom):
             code = request.POST["input"]
             intake = request.POST["custom_input"]
+            print("cust_C")
             s = "User_Data/{0}/cust_input.txt".format(tester.user.username)
             with open(s, "w+") as inp:
                 inp.write(intake)
@@ -154,17 +157,8 @@ def clash_sub(request, pk):
             errors = f2.read()
             errors = san_saf_error(errors, language)
             f2.close()
-            return render(
-                request,
-                "question.html",
-                {
-                    "ques": que,
-                    "code": code,
-                    "input": intake,
-                    "output": result,
-                    "error": errors,
-                },
-            )
+            print(result)
+            return JsonResponse({"opt" : result},status=200)
         elif que.junior == tester.junior or que.junior == None:
             code = request.POST["input"]
             views.get_code(code, request.user.username, language)
