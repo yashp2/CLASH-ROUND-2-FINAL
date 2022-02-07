@@ -10,4 +10,7 @@ urlpatterns = [
     path('mysubs/<int:pk>',views.mysubmission,name='clash-mysub'),
     path('submit/<int:pk>',views.clash_sub,name='clash-sub'),
     path('logout',views.logout_view,name='logout'),
+    path('buffer',views.buffer,name='buffer'),
+    # path('leaderboard1',views.leaderboardf,name='lb'),
+
 ]

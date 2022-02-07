@@ -9,6 +9,7 @@ from sandbox import views
 from django.db.models import Q
 from datetime import datetime
 import re
+from django.http import JsonResponse
 
 
 signals = {
@@ -43,12 +44,40 @@ def home(request):
 @login_required
 @timer
 def leaderboard(request):
+    tester = Player.objects.get(user=request.user)
     if request.user.is_authenticated:
         data = []
+        rank=0
+        counter=0
         for user in Player.objects.order_by("-total_score"):
             data.append(user)
-        return render(request, "leaderboard.html", {"data": data})
+            rank+=1
+            if(user==tester):
+                counter=rank
+        return render(request, "leaderboard.html", {"data": data,"rank":counter,"name":tester.user.username,"score":tester.total_score})
 
+
+# @login_required
+# @timer
+# def leaderboardf(request):
+#     if request.user.is_authenticated:
+#         data = []
+#         for user in Player.objects.order_by("-total_score"):
+#             data.append(user)
+#         return JsonResponse({"data1":data})
+
+@login_required
+@timer
+def buffer(request,pk):
+    l1 = []
+    for i in Submission.objects.all().filter(p_id=Player.objects.get(user=request.user), q_id=pk):
+        l1.append(i)
+        break
+    if(len(l1)==0):
+        s=""
+    else:
+        s=l1[0].code
+    return JsonResponse({'key':s},status=200)
 
 @login_required
 @timer
@@ -66,7 +95,7 @@ def contest(request):
             status = "Not Attempted"
             l_status.append(status)
     mylist = zip(ques, l_status)
-    print("hello")
+    # print("hello")
     return render(request, "trial1.html", {"mylist": mylist})
 
 
@@ -74,18 +103,37 @@ def contest(request):
 @timer
 def question(request, pk):
     ques = Question.objects.get(pk=pk)
-    return render(request, "question.html", {"ques": ques})
+    tester = Player.objects.get(user=request.user)
+    return render(request, "question.html", {"ques": ques,"score":tester.total_score})
 
 
 @login_required
 @timer
 def mysubmission(request, pk):
     l1 = []
+    ac=0
+    wa=0
+    tle=0
+    rte=0
+    cte=0
+    mle=0
     for i in Submission.objects.all().filter(
         p_id=Player.objects.get(user=request.user), q_id=pk
     ):
         l1.append(i)
-    return render(request, "mysub.html", {"data": l1})
+        if(i.status=="RE"):
+            rte+=1
+        elif(i.status=="AC"):
+            ac+=1
+        elif(i.status=="WA"):
+            wa+=1
+        elif(i.status=="TLE"):
+            tle+=1
+        elif(i.status=="CTE"):
+            cte+=1
+        else:
+            mle+=1
+    return render(request, "mysub.html", {"data": l1,"ac":ac,"rte":rte,"wa":wa,"tle":tle,"cte":cte,"mle":mle,"pk":pk})
 
 
 def get_upload_path(instance):
@@ -128,14 +176,17 @@ def clash_sub(request, pk):
     language = request.POST.get("language")
     s = ""
     if request.method == "POST":
-        custom=False
+        custom=True
         for key in request.POST:
-            if(key=="cust"):
-                custom=True
+            print(key)
+            if(key=="normal"):
+                custom=False
         if(custom):
             code = request.POST["input"]
             intake = request.POST["custom_input"]
+            print("cust_C")
             s = "User_Data/{0}/cust_input.txt".format(tester.user.username)
+            error_code=0
             with open(s, "w+") as inp:
                 inp.write(intake)
             with open(s, "r") as inp:
@@ -149,22 +200,13 @@ def clash_sub(request, pk):
                 result = f2.read()
                 f2.close()
                 f2 = open(
-                "sandbox/submissions/{}/error.txt".format(tester.user.username), "r"
-            )
+                "sandbox/submissions/{}/error.txt".format(tester.user.username), "r")
             errors = f2.read()
             errors = san_saf_error(errors, language)
+            if(error_code!=0):
+                result=errors
             f2.close()
-            return render(
-                request,
-                "question.html",
-                {
-                    "ques": que,
-                    "code": code,
-                    "input": intake,
-                    "output": result,
-                    "error": errors,
-                },
-            )
+            return JsonResponse({"opt" : result},status=200)
         elif que.junior == tester.junior or que.junior == None:
             code = request.POST["input"]
             views.get_code(code, request.user.username, language)
@@ -232,17 +274,19 @@ def clash_sub(request, pk):
             errors = f2.read()
             errors = san_saf_error(errors, language)
             f2.close()
+            if(display_error==""):
+                display_error="Wrong Anwer"
             if correct_tcs == tc_count:
                 return render(
                     request,
-                    "submission.html",
-                    {"result": "All Correct", "testcase": cases},
+                    "base.html",
+                    {"result": "All Correct", "testcase": cases,'score':scr,'pk':pk}
                 )
             else:
                 return render(
                     request,
-                    "submission.html",
-                    {"result": "Incorrect", "testcase": cases, "error": errors},
+                    "base.html",
+                    {"result": display_error, "testcase": cases, "error": errors,'score':scr,'pk':pk}
                 )
         else:
             return redirect("clash-contest")
@@ -255,6 +299,7 @@ def login_page(request):
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
+        junior_stat=request.pis
         user = authenticate(request, username=username, password=password)
         if user is not None:
             try:
@@ -300,13 +345,17 @@ def login_page(request):
 
 @login_required
 def logout_view(request):
-    logout(request)
+    tester = Player.objects.get(user=request.user)
     data = []
     count = 0
+    rank=0
     for user in Player.objects.order_by("-total_score"):
-        if count < 3:
+        count += 1
+        if count < 6:
             data.append(user)
-            count += 1
-        else:
+        if(tester==user):
+            rank=count
+        if(rank>0 and count>5):
             break
-    return render(request, "result.html", {"leaders": data})
+    logout(request)
+    return render(request, "result.html", {"leaders": data,"rank":rank,"score":tester.total_score})

@@ -37,4 +37,4 @@ def seccomp_filter():
 
 seccomp_filter()
 
-print(int(input())+10)
+print('hello)

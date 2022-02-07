@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body %}
+{%if result %}
+    {{result}}
+{% else %}
+    {{result}}
+{% endif %}
+<p>
+
+    {{error}}
+
+</p>
+
+<br>
+<table>
+    		{% for test in testcase %}
+		<tr>
+			<th>Case {{forloop.counter}}</th>
+		</tr>
+
+		<tr>
+			<td>{{test}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{%endblock%}

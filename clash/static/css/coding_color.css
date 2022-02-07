@@ -74,7 +74,7 @@
   box-shadow: 4px 4px #000000;
 }
 
-.questionbar > button {
+.questionbar > a {
   color: white;
 }
 
@@ -144,7 +144,10 @@
   box-shadow: 4px 4px #000000;
   color: white;
 }
-
+.modebtns:hover{
+  color: white;
+  cursor: pointer;
+}
 .ace-dracula {
   background-color: transparent;
 }
@@ -155,6 +158,10 @@
 .langchoose:hover {
   background-color: #1d273b;
   color: white;
+}
+
+.activeques{
+  border-bottom: 2px solid white;
 }
 
 @media (max-width: 992px) {

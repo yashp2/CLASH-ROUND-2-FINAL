@@ -66,15 +66,15 @@
       <div class="collapse navbar-collapse stroke" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item ">
-            <a class="nav-link active navvi" aria-current="page" href="../question/"
+            <a class="nav-link active navvi" aria-current="page" href="{%url 'clash-contest'%}"
               style="margin-left: 10px;margin-right: 10px;">Question Hub</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link active navvi" aria-current="page" href="../mysubs/<int:pk>"
-                style="margin-left: 10px;margin-right: 10px;">Submissions</a>
+            <a class="nav-link active navvi" aria-current="page" href="../mysubs/{{ques.id}}"
+                style="margin-left: 10px;margin-right: 10px;">Submissions</a> <!-- correct -->
         </li>
           <li class="nav-item">
-            <a class="nav-link navvi" aria-current="page" href="../leaderboard"
+            <a class="nav-link navvi" aria-current="page" href="{%url 'clash-leaderboard'%}"
               style="margin-left: 10px;margin-right: 10px;">Leaderboard</a>
           </li>
           <li class="nav-item ">
@@ -97,7 +97,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                      <button type="button" class="btn btn-danger">Logout</button>
+                      <a href="{%url 'logout'%}"  class="btn btn-danger">Logout</a>
                     </div>
                   </div>
                 </div>
@@ -114,48 +114,50 @@
     <div class="lcont">
       <div class="lcontup">
         <div class="score ">
-          <h5>SCORE : 00</h5>
+          <h5>SCORE : {{score}}</h5>
         </div>
 
-        <div class="rank">
+        <!-- <div class="rank">
           <h5>YOUR RANK : 00</h5>
-        </div>
+        </div> -->
       </div>
 
       <div class="lcontq">
 
         <div class="questionbar">
-          <button type="button" class="btn btn-white" style="border-bottom: 2px solid white;">Q1</a></button>
+          <a type="button" class="btn btn-white" id="qbt1" href="{%url 'clash-question' 1 %} ">Q1</a>
         </div>
         <div class="questionbar">
-          <button type="button" class="btn btn-white">Q2</button>
+          <a type="button" class="btn btn-white" id="qbt2" href="{%url 'clash-question' 2 %}" >Q2</a>
+          <!-- <a href="{%url 'clash-question' 2 %}">hwllo</a> -->
         </div>
         <div class="questionbar">
-          <button type="button" class="btn btn-white">Q3</button>
+          <a type="button" class="btn btn-white" id="qbt3" href="{%url 'clash-question' 3 %}" >Q3</a>
         </div>
         <div class="questionbar">
-          <button type="button" class="btn btn-white">Q4</button>
+          <a type="button" class="btn btn-white" id="qbt4" href="{%url 'clash-question' 4 %}" >Q4</a>
         </div>
         <div class="questionbar">
-          <button type="button" class="btn btn-white">Q5</button>
+          <a type="button" class="btn btn-white" id="qbt5" href="{%url 'clash-question' 5 %}" >Q5</a>
         </div>
         <div class="questionbar">
-          <button type="button" class="btn btn-white">Q6</button>
+          <a type="button" class="btn btn-white" id="qbt6" href="{%url 'clash-question' 6 %}" >Q6</a>
         </div>
       </div>
 
       <div class="lcontmain">
         <textarea name="questionarea" id="questionarea" rows="10" readonly >
-<h1>{{ques.id}}) {{ques.title}}</h1>
-{{ques.body}}
+        {{ques.id}}) {{ques.title}}
+        {{ques.body}}
         </textarea>
       </div>
     </div>
 
+      <h3 style="display:none" id="aques">{{ques.id}}</h3>
     
       <div class="rcont">
       <!-- <form action="" method="post"> -->
-        <form action="{%url 'clash-sub' ques.id%}" method='post'>
+        <form action="{%url 'clash-sub' ques.id%}" method='post' id="qpgform">
           {%csrf_token%}
       <div class="rcontup">
         <div>
@@ -169,7 +171,7 @@
           <!-- <label for="choosefile" style="display: none;">hello</label>
           <input type="file" name="Codefile" id="cfile" class="choosefile"> -->
           <label class="btn custom-input-btn choosefile">
-            <input type="file" name="photo" style="display:none" accept=".cpp , .py , .c , .java " id="cfile">
+            <input type="file" name="photo" style="display:none" accept=".cpp , .py , .c , .txt" id="cfile">
             Choose File
           </label>
         </div>
@@ -177,32 +179,29 @@
           <input type="button" value="Load Buffer" class="loadbuffer" id="Loadbuffer">
         </div>
         <div>
-          <button onclick="darkmode()" class="modebtns" id="darkmodebtn">
+          <a onclick="darkmode()" class="modebtns" id="darkmodebtn">
             <i class="fas fa-moon "></i>
-          </button>
-          <button onclick="lightmode()" class="modebtns" id="lightmodebtn">
+          </a>
+          <a onclick="lightmode()" class="modebtns" id="lightmodebtn">
             <i class="fas fa-sun"></i>
-          </button>
+          </a>
         </div>
       </div>
 
-      <textarea name="input" id="w3revi" cols="50" rows="4"></textarea>
+      <textarea name="input" id="w3revi" cols="50" rows="4" style="display:none"></textarea>
 
-      <div style=" display: block;" class="codeeditdiv" media="screen">
-        <div id="editor" media="screen">
-          
-        </div>
-      </div>
+      <div style=" display: block;" class="codeeditdiv" media="screen"><div id="editor" media="screen"></div></div>
       <div class="rcontd">
         <div>
+          <!-- onclick="cleareditor() , fn1()" -->
           <input type="reset" value="Clear" class="rbtnd" onclick="cleareditor()">
         </div>
         <div>
-          <input type="submit" value="Submit" class="rbtnd">
+          <input type="submit" value="Submit" name="normal" onclick="ecxvalues()" class="rbtnd">
         </div>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn rbtnd" data-bs-toggle="modal" data-bs-target="#Codeeditor">
+        <button type="button" class="btn rbtnd" data-bs-toggle="modal" data-bs-target="#Codeeditor" onclick="ecxvalues()">
           Test Against Custom Input
         </button>
 
@@ -230,7 +229,7 @@
                 <div class="cio">
                   <div class="ciod">
                     <h5>Custom Input:</h5>
-                    <textarea name="custom_input" id="custom_input" rows="6">{{input}}</textarea>
+                    <textarea name="custom_input" id="custominput" rows="6">{{input}}</textarea>
                   </div>
                   <div class="ciod">
                     <h5>Output:</h5>
@@ -240,8 +239,8 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary modalclosebtn" data-bs-dismiss="modal">Close</button>
-                <button value="Go" name="cust" type="submit">Submit</button>
-
+                <!-- <button value="Go" name="cust" type="submit" class="btn btn-success modalrunbtn"><i class="fas fa-play"></i> Run</button> -->
+                <input type="submit" value="Run" name="cust"  class="btn btn-success modalrunbtn">
                 <!-- <button type="button" class="btn btn-success modalrunbtn" name="cust"><i class="fas fa-play"></i> Run</button> -->
               </div>
             </div>
@@ -261,6 +260,101 @@
   <script src="{% static 'ace-builds-master/src-noconflict/ext-language_tools.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/coding_editor.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/coding_script.js' %}"></script>
+  
+  <!-- jquery -->
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- ... -->
+  <script type="text/javascript">
+    // window.onload = checkcc;
+    var aq=document.querySelector("#aques").textContent;
+    document.getElementById("darkmodebtn").addEventListener('load', function(){
+      
+    });
+    document.getElementById("lightmodebtn").addEventListener('load', checkcc());
+    $('.modalrunbtn').click(function(e){
+      
+      // ecxvalues();
+      e.preventDefault();
+      // console.log($('#textformat').val());
+      
+      var formdata=$('#qpgform').serialize();
+      console.log(formdata);
+      
+      $.ajax({
+        type : 'POST',
+        url : "{%url 'clash-sub' ques.id%}",
+        data: formdata,
+        success: function(response,res1){
+          console.log("bkc");
+          
+          // console.log(response.opt);
+          // console.log(res1);
+          // console.log(res2);
+          $("#output").val(response.opt);
+        }
+      })
+
+    })
+
+    $( document ).ready(function() {
+    console.log( "ready!" );
+    let aq=document.querySelector("#aques").textContent;
+
+    var qids=["#qbt1","#qbt2","#qbt3","#qbt4","#qbt5","#qbt6"];
+    console.log(qids[aq]);
+
+    document.querySelector(qids[aq-1]).classList.add('activeques');
+    
+    // console.log();
+    
+    // document.querySelector()
+    });
+
+    
+    function scode() {
+      ecxvalues();
+      let lang=document.getElementById("textformat").value;
+    // your function code here
+    if(lang=="py"){
+    localStorage.setItem(`pyc${aq-1}`, document.getElementById("w3revi").textContent);
+    }
+    else if(lang=="c")
+    {
+      localStorage.setItem(`cc${aq-1}`, document.getElementById("w3revi").textContent);
+    }
+    else{
+      localStorage.setItem(`cppc${aq-1}`, document.getElementById("w3revi").textContent);
+    }
+    console.log('hello');
+    setTimeout(scode, 500);
+    console.log(localStorage.getItem(`pyc${aq-1}`));
+    console.log(localStorage.getItem(`cc${aq-1}`));
+    console.log(localStorage.getItem(`cppc${aq-1}`));
+    
+    }
+    scode();
+
+    function checkcc(){
+      let lang=document.getElementById("textformat").value;
+      if(lang=="py"){
+        document.getElementById("w3revi").textContent=localStorage.getItem(`pyc${aq-1}`);
+        editor.setValue(document.getElementById("w3revi").textContent);
+      }
+      else if(lang=="c")
+      {
+        document.getElementById("w3revi").textContent=localStorage.getItem(`cc${aq-1}`);
+        editor.setValue(document.getElementById("w3revi").textContent);
+      }
+      else{
+        document.getElementById("w3revi").textContent=localStorage.getItem(`cppc${aq-1}`);
+        editor.setValue(document.getElementById("w3revi").textContent);
+      }
+    }
+
+    
+
+  </script>
   <script src="https://kit.fontawesome.com/84ff0cdea4.js" crossorigin="anonymous"></script>
   <!-- Footer goes here -->
   <footer class="text-center fixed-bottom footerr">

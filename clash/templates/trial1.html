@@ -14,7 +14,7 @@
 
     <!-- ajax link, js link and css link is added here -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../static/questionHubPage.js"></script>
+    <script type="text/javascript" src="{% static 'js/questionHubPage.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/questionHubPage.css' %}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@
     <!-- Navbar goes here -->
     <nav class="navbar navbar-expand-lg navbarr">
         <div class="container-fluid">
-            <a class="navbar-brand navvi" href="#" style="padding: 0px;"><img src="./clashwhite.png" alt="Clash Logo"
+            <a class="navbar-brand navvi" href="#" style="padding: 0px;"><img src="{% static 'img/clashwhite.png' %}" alt="Clash Logo"
                     height="30px"></a>
             <a class="navbar-brand navvi timer" href="#" style="margin-left: 20px;">TIMER </a>
 
@@ -41,17 +41,17 @@
             </button>
             <div class="collapse navbar-collapse stroke" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item ">
-                        <a class="nav-link active navvi" aria-current="page" href="./submissions.html"
+                    <!-- <li class="nav-item ">
+                        <a class="nav-link active navvi" aria-current="page"  href="../mysubs/{{ques.id}}"
                             style="margin-left: 10px;margin-right: 10px;">Submissions</a>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item">
-                        <a class="nav-link navvi" aria-current="page" href="./leaderboard.html"
+                        <a class="nav-link navvi" aria-current="page" href="{%url 'clash-leaderboard'%}"
                             style="margin-left: 10px;margin-right: 10px;">Leaderboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navvi" aria-current="page" href="./instructions.html"
+                        <a class="nav-link navvi" aria-current="page" href="{%url 'clash-home'%}"
                             style="margin-left: 10px;margin-right: 10px;">Instructions</a>
                     </li>
                     <li class="nav-item navvi">
@@ -83,7 +83,7 @@
                 </ul>
             </div>
             <a class="navbar-brand navvi pisblogo" href="#" style="padding: 0px; margin-left: 20px;"><img
-                    src="./pisblogo.png" alt="Clash Logo" height="30px"></a>
+                    src="{% static '/img/pisblogo.png' %}" alt="Clash Logo" height="30px"></a>
         </div>
     </nav>
 
@@ -96,9 +96,9 @@
                     <!-- <div class="myflex"> -->
                     <!-- 1st box starts here -->
                     <!-- <div class="d-flex justify-content-center"> -->
-                {% for result,stat in mylist %}                        
+                {% for result,stat in mylist %}                      
                     <div class="col-md-4 col-sm-6 col-sx-12">
-                        <div class="post-module1 ">
+                        <div class="post-module{{forloop.counter}}">
                             <!-- style="background-image: linear-gradient(180deg, rgba(18, 25, 33, 0) 41.15%, rgba(18, 25, 33, 0.37) 54.8%, rgba(18, 25, 33, 0.63) 71.51%, rgba(18, 25, 33, 0.86) 85.37%, #121921 100%);"  -->
                             <!-- btw, 1px margin-bottom here gives button and image/content kinda different (a bit of space) look -->
                             <div class='post-modules'>
@@ -115,15 +115,14 @@
                                         <span class="col-9 ">
                                             <div class="progress progress-bar-striped progress-bar-animated">
                                                 <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                                    role="progressbar" aria-valuenow="15" aria-valuemin="0"
-                                                    aria-valuemax="100" style="width: {{ result.accuracy }}"
+                                                    role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                                    aria-valuemax="100" style="width: {{result.accuracy}}%;"
                                                     style="font-weight: lighter !important;">{{result.accuracy}}</div>
                                             </div>
                                         </span>
                                     </div>
                                     <!-- the below part will only appers after hovering over post module1 -->
-                                    <p class='description description1'><br> Put your optimisation skills to test in
-                                        order to efficiently manage passenger flow.</p>
+                                    <p class='description description{{forloop.counter}} text-center'><br> {{result.body}}</p>
                                 </div>
                             </div>
                             <div class="row no-gutters">
@@ -150,7 +149,7 @@
                     <!-- </div>  -->
                 </div>
                 <!-- this is for space between cards and border like padding-bottom-->
-                <br>
+                <br> 
             </div>
         </div>
     </div>

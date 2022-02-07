@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-lg navbarr">
       <div class="container-fluid">
         <a class="navbar-brand navvi" href="#" style="padding: 0px"
-          ><img src="../img/clashwhite.png" alt="Clash Logo" height="30px"
+          ><img src="{% static '/img/clashwhite.png' %}" alt="Clash Logo" height="30px"
         /></a>
         <a class="navbar-brand navvi timer" href="#" style="margin-left: 20px"
           >TIMER
@@ -53,7 +53,7 @@
               <a
                 class="nav-link active navvi"
                 aria-current="page"
-                href="./questionHubPage.html"
+                href="{%url 'clash-contest' %}"
                 style="margin-left: 10px; margin-right: 10px"
                 >Question Hub</a
               >
@@ -62,7 +62,7 @@
               <a
                 class="nav-link navvi"
                 aria-current="page"
-                href="./leaderboard.html"
+                href="{%url 'clash-leaderboard' %}"
                 style="margin-left: 10px; margin-right: 10px"
                 >Leaderboard</a
               >
@@ -110,12 +110,12 @@
                       >
                         Cancel
                       </button>
-                      <form action="{%url 'logout'%}">
-                          {%csrf_token%}
-                          <button type="button" class="btn btn-danger">
+                      {% comment %} <form action="{%url 'logout'%}">
+                          {%csrf_token%} {% endcomment %}
+                          <a class="btn btn-danger" href="{%url 'logout' %}">
                             Logout
-                          </button>
-                      </form>
+                          </a>
+                      {% comment %} </form> {% endcomment %}
     
                     </div>
                   </div>
@@ -128,7 +128,7 @@
           class="navbar-brand navvi pisblogo"
           href="#"
           style="padding: 0px; margin-left: 20px"
-          ><img src="../img/pisblogo.png" alt="Clash Logo" height="30px"
+          ><img src="{% static '/img/pisblogo.png' %}" alt="Clash Logo" height="30px"
         /></a>
       </div>
     </nav>
@@ -140,7 +140,7 @@
           <div class="card text-dark abtn mx-5" id="status">
             <div class="card-body text-white">
               <h4>Status</h4>
-              <h4>AC</h4>
+              <h4>{{result}}</h4>
             </div>
           </div>
         </div>
@@ -153,27 +153,27 @@
               id="comment"
               name="text"
               readonly
-            ></textarea>
+            >{{error}}</textarea>
           </div>
         </div>
         <div class="col-md-3 mob-score">
           <div class="card text-dark abtn mx-5" id="score">
             <div class="card-body text-white">
               <h4>Score</h4>
-              <h4>100</h4>
+              <h4>{{score}}</h4>
             </div>
           </div>
         </div>
       </div>
       <div class="d-flex justify-content-center mob-retry">
-        <button type="button" class="btn text-white mt-4 w-25">Retry</button>
+        <a type="button" class="btn text-white mt-4 w-25" href="{%url 'clash-question' pk%}">Retry</a>
       </div>
     </div>
 
     <div class="container-fluid test-cases mob-cases">
       <div class="row text-center mob-row mb-3">
         <div class="col-4 col-md-4">
-		{% for test in testcase %}
+		      {% for test in testcase %}
           <div class="card height-card padup" id="tc">
             <div class="card-body">
               <h5 class="glow">
@@ -184,20 +184,19 @@
           </div>
 		  {% endfor %}
 
-		  
-
-
       </div>
     </div>
+  </div>
 
     <!-- Footer goes here -->
-  </body>
   <div class="clear"></div>
   <footer class="text-center fixed-bottom footerr">
     <div class="container-fluid">
       <div class="footer-text pt-3 pb-3">PISB <span>&copy</span></div>
     </div>
   </footer>
+</body>
+
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
