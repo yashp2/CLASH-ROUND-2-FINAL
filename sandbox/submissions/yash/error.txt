@@ -1,2 +1,5 @@
-/usr/bin/ld: cannot find -lseccomp
-collect2: error: ld returned 1 exit status
+In file included from User_Data/yash/codeCPP.cpp:1:
+/home/admin11/Desktop/PICT/PISB/git pull requests/fromjaha/CREDENZ-02-02-22/sandbox/filter/filter.h:1:9: fatal error: seccomp.h: No such file or directory
+    1 | #include<seccomp.h>
+      |         ^~~~~~~~~~~
+compilation terminated.

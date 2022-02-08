@@ -219,7 +219,7 @@
 		</thead>
 		<tbody>
 			<tr>
-			{% for result in data %}
+			<!-- {% for result in data %}
 				<td>{{forloop.counter}}</td>
 				<td>{{result.user.username}}</td>
 				<td>{{result.ques1}}</td>
@@ -230,23 +230,41 @@
 				<td>{{result.ques6}}</td>
 				<td>{{result.total_score}}</td>
 			  </tr>
-			{% endfor %}  
+			{% endfor %}   -->
+			{% for item in items %}
+        <td>{{ loop.index }}</td>
+				<td>{{item.user.username}}</td>
+				<td>{{item.ques1}}</td>
+				<td>{{item.ques2}}</td>
+				<td>{{item.ques3}}</td>
+				<td>{{item.ques4}}</td>
+				<td>{{item.ques5}}</td>
+				<td>{{item.ques6}}</td>
+				<td>{{item.total_score}}</td>
+			  </tr>
+			{% endfor %}        
             </tbody>
           </table>
           <nav aria-label="Page navigation example">
             <div class="pagi-color">
-              <ul class="pagination">
+              <ul class="pagination"> 
+                {% if items.has_previous %}
                 <li class="page-item">
-                  <a class="page-link" href="#">Previous</a>
+                  <a class="page-link" href="{%url 'clash-leaderboard' %}?page={{items.previous_page_number}}">Previous</a>
+                </li>
+                {% endif %}
+
+                <li class="page-item">
+                  <a class="page-link" href="?page=1">1</a>
                 </li>
                 <li class="page-item">
-                  <a class="page-link" href="#">1</a>
+                  <a class="page-link" href="?page=2">2</a>
                 </li>
+                {% if items.has_next %}                
                 <li class="page-item">
-                  <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
+                  <a class="page-link" href="{%url 'clash-leaderboard' %}?page={{items.next_page_number}}">Next</a>
+                {% endif %}
+
                 </li>
               </ul>
             </div>
@@ -257,30 +275,14 @@
  <!-- jquery -->
   <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    var dat=`{{data}}`;
+    console.log(dat);
   
+    
+  </script>
   <!-- ... -->
   <!-- <script type="text/javascript">  -->
-    <script>
-      function loadcontent(){
-    
-    $.ajax({
-        type : 'GET',
-        url : "{%url 'clash-leaderboard' %}",
-        success: function(response){
-          console.log("bkc");
-          
-          // console.log(response.opt);
-          // console.log(res1);
-          // console.log(res2);
-          console.log(response);
-          
-        //   $("#output").val(response.list);
-        }
-    })
-}
-loadcontent();
-
-    </script>
     <footer class="text-center fixed-bottom footerr">
       <div class="container-fluid">
         <div class="footer-text pt-3 pb-3">PISB <span>&copy</span></div>

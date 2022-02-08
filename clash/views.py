@@ -10,6 +10,7 @@ from django.db.models import Q
 from datetime import datetime
 import re
 from django.http import JsonResponse
+from django.core.paginator import Paginator
 
 
 signals = {
@@ -54,7 +55,15 @@ def leaderboard(request):
             rank+=1
             if(user==tester):
                 counter=rank
-        return render(request, "leaderboard.html", {"data": data,"rank":counter,"name":tester.user.username,"score":tester.total_score})
+        mydata=data
+        p=Paginator(mydata,3)
+        page_num=request.GET.get('page',1)
+        
+        try:
+            page=p.page(page_num)
+        except EmptyPage:
+            page = p.page(1)
+        return render(request, "leaderboard.html", {"data": data,"rank":counter,"name":tester.user.username,"score":tester.total_score,"items":page})
 
 
 # @login_required
@@ -84,6 +93,8 @@ def buffer(request,pk):
 def contest(request):
     tester = Player.objects.get(user=request.user)
     ques = Question.objects.filter(Q(junior=tester.junior) | Q(junior=None))
+    obj = SetTime.objects.get(pk=1)
+    time = obj.final_time #final time format 2022-02-08 18:30:19+05
     l_status = []
     for que in ques:
         status = Submission.objects.filter(q_id=que, p_id=tester)
@@ -96,7 +107,7 @@ def contest(request):
             l_status.append(status)
     mylist = zip(ques, l_status)
     # print("hello")
-    return render(request, "trial1.html", {"mylist": mylist})
+    return render(request, "trial1.html", {"mylist": mylist, "time":time})
 
 
 @login_required
@@ -104,6 +115,7 @@ def contest(request):
 def question(request, pk):
     ques = Question.objects.get(pk=pk)
     tester = Player.objects.get(user=request.user)
+
     return render(request, "question.html", {"ques": ques,"score":tester.total_score})
 
 
@@ -299,7 +311,6 @@ def login_page(request):
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
-        junior_stat=request.pis
         user = authenticate(request, username=username, password=password)
         if user is not None:
             try:

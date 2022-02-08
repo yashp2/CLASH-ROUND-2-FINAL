@@ -57,7 +57,7 @@
     <div class="container-fluid">
       <a class="navbar-brand navvi" href="#" style="padding: 0px;"><img src="{% static 'img/clashwhite.png' %}" alt="Clash Logo"
           height="30px"></a>
-      <a class="navbar-brand navvi timer" href="#" style="margin-left: 20px;">TIMER </a>
+      <a class="navbar-brand navvi timer" href="#" id="timer" style="margin-left: 20px;">TIMER </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -214,17 +214,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body tacib">
-                <div class="inpf">
+                <!-- <div class="inpf">
                   <h5>Input Format:</h5>
-                  <!-- <br> -->
+                  <br>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium voluptatum iste nulla unde.
                     Nemo, maxime. Facilis fugit recusandae enim perspiciatis.
 
                   </p>
-                  <!-- <h6>Example:</h6>
-                  <textarea name="Sampleinput" id="sampleinput" rows="3" readonly></textarea> -->
-                </div>
+                  <h6>Example:</h6>
+                  <textarea name="Sampleinput" id="sampleinput" rows="3" readonly></textarea>
+                </div> -->
 
                 <div class="cio">
                   <div class="ciod">
@@ -352,9 +352,37 @@
       }
     }
 
-    
 
   </script>
+
+  <script>
+    //Timer
+    let countdown = '{{ time }}'; //in seconds
+    console.log('{{ time }}');
+    const timerBlock = document.querySelector('#timer');
+    const x = setInterval(() => {
+        countdown = countdown - 1;
+        let hours = Math.floor(countdown / 3600);
+        let minutes = Math.floor((countdown % 3600) / 60);
+        let seconds = Math.floor((countdown % 3600) % 60);
+        if (countdown < 0) {
+            timerBlock.innerHTML = 'Expired';
+            clearInterval(x);
+        }
+        if (hours < 10) {
+            hours = '0' + hours;
+        }
+        if (minutes < 10) {
+            minutes = '0' + minutes;
+        }
+        if (seconds < 10) {
+            seconds = '0' + seconds;
+        }
+        timerBlock.innerHTML = `${hours}:${minutes}:${seconds}`;
+    }, 1000);
+</script>
+
+
   <script src="https://kit.fontawesome.com/84ff0cdea4.js" crossorigin="anonymous"></script>
   <!-- Footer goes here -->
   <footer class="text-center fixed-bottom footerr">
