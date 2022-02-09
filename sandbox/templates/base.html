@@ -29,9 +29,15 @@
         <a class="navbar-brand navvi" href="#" style="padding: 0px"
           ><img src="{% static '/img/clashwhite.png' %}" alt="Clash Logo" height="30px"
         /></a>
-        <a class="navbar-brand navvi timer" href="#" style="margin-left: 20px"
-          >TIMER
-        </a>
+        <div class="navbar-brand navvi timer" href="#" style="margin-left: 20px">
+          <div class="timer_container">
+            <div class=" w-100 d-flex p-0 flex-grow-1" id="countdown">TIMER: 
+                <span id="hours" class="timeritems"></span> :
+                <span id="minutes" class="timeritems"></span> :
+                <span id="seconds" class="timeritems"></span>
+            </div>
+          </div> 
+        </div>
 
         <button
           class="navbar-toggler"
@@ -66,6 +72,10 @@
                 style="margin-left: 10px; margin-right: 10px"
                 >Leaderboard</a
               >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link navvi" aria-current="page" href="{%url 'clash-home'%}"
+                  style="margin-left: 10px;margin-right: 10px;">Instructions</a>
             </li>
             <li class="nav-item navvi">
               <a
@@ -177,8 +187,14 @@
           <div class="card height-card padup" id="tc">
             <div class="card-body">
               <h5 class="glow">
-                Test {{forloop.counter}}
-                <i class="fa fa-close" style="font-size: 40px; color: red">{{test}}</i>
+                Testcase {{forloop.counter}} {{test}}
+                {% if test == "correct" %}
+                <i class="fa fa-check-circle" style="font-size: 40px; color: green"></i>
+                
+                {% else %}            
+                <i class="fa fa-close" style="font-size: 40px; color: red"></i>
+                {%endif%}
+
               </h5>
             </div>
           </div>
@@ -189,8 +205,8 @@
   </div>
 
     <!-- Footer goes here -->
-  <div class="clear"></div>
-  <footer class="text-center fixed-bottom footerr">
+  <div class="clear" style="height:10px"></div>
+  <footer class="text-center fixed-bottom footerr" style="position:absolute;bottom:0;width:100%;">
     <div class="container-fluid">
       <div class="footer-text pt-3 pb-3">PISB <span>&copy</span></div>
     </div>
@@ -206,6 +222,37 @@
     src="https://kit.fontawesome.com/a076d05399.js"
     crossorigin="anonymous"
   ></script>
+  <script>
+    //Timer
+    (function () {
+    const second = 1000,
+          minute = second * 60,
+          hour = minute * 60,
+          day = hour * 24;
+    
+    const countDown = new Date('{{time}}').getTime(),
+        x = setInterval(function() {    
+  
+          const now = new Date().getTime(),
+                distance = countDown - now;
+  
+        //   document.getElementById("days").innerText = Math.floor(distance / (day)),
+            document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+            document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+            document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+  
+          //do something later when date is reached
+          if (distance < 0) {
+            document.getElementById("headline").innerText = "";
+            document.getElementById("countdown").style.display = "";
+            document.getElementById("content").style.display = "";
+            clearInterval(x);
+            location.href="{%url 'logout'%}";
+          }
+          //seconds
+        }, 0)
+    }());
+</script>
 </html>
 
 

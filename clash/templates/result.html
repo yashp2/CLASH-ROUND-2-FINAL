@@ -81,14 +81,15 @@
     <div class="container-fluid" id="b" style="max-height: calc(100vw - 120px)">
       <div class="row">
         <div class="col-md-3 user mid-align">
-          <div class="row justify-content-center">
+          <div style="display:block;height:50px"></div>
+          <!-- <div class="row justify-content-center">
             <div class="col-6 border border-5 border-dark msg mt-2 fs-4">
               Well Tried
             </div>
-          </div>
-          <div class="row justify-content-center">
+          </div> -->
+          <!-- <div class="row justify-content-center">
             <div class="col-2 tip"></div>
-          </div>
+          </div> -->
           <div class="row justify-content-around margin_side gx-1">
             <div class="col-md-10 box border border-3 border-dark">
               <div class="row mt-2 pt-1 fw-bold gx-1">
@@ -104,7 +105,7 @@
                 <div class="col-md-12 font_wt">Score</div>
               </div>
               <div class="row fs-4 down_bor gx-1">
-                <div class="col-md-12">{{score}}</div>
+                <div class="col-md-12">{{tester.total_score}}</div>
               </div>
               <div class="row fs-4">
                 <div class="col-md-12 font_wt">Questions<br />Attempted</div>
@@ -125,7 +126,7 @@
           <div class="row justify-content-center">
             <div
               class="row justify-content-evenly align-items-center mt-3 mb-4">
-			  {% for result in leaders %}		  
+            <!-- {% for result in leaders %}	
               <div class="col-md-4">
                 <div id="the-ribbon" class="award-ribbonone">
                   <span class="award-ribbonone-text"
@@ -134,14 +135,21 @@
                     <br />Score-{{result.total_score}}</span>
                 </div>
               </div>
-			  {% endfor %}
-               <!-- <div class="col-md-4">
+			      {% endfor %} -->
+              <div class="col-md-4">
+                <div id="the-ribbon" class="award-ribbonone">
+                  <span class="award-ribbonone-text"
+                    >1st<br /><br />
+                    {{first.user.username}} <br />
+                    <br />Score-{{first.total_score}}</span>
+                </div>
+              </div>        
+              <div class="col-md-4">
                 <div id="the-ribbon" class="award-ribbontwo">
                   <span class="award-ribbontwo-text"
                     >2nd <br /><br />
-                    Aashish Gupta <br />
-                    <br />Score-75</span
-                  >
+                    {{second.user.username}} <br />
+                    <br />Score-{{second.total_score}}</span>
                 </div>
               </div> 
 
@@ -149,11 +157,11 @@
                 <div id="the-ribbon" class="award-ribbonthree">
                   <span class="award-ribbonthree-text"
                     >3rd <br /><br />
-                    Aditya Mahajan <br />
-                    <br />Score-70</span
+                    {{third.user.username}} <br />
+                    <br />Score-{{third.total_score}}</span
                   >
                 </div>
-              </div>  -->
+              </div> 
             </div>
           </div>
           <div class="row justify-content-around bottom">
@@ -164,13 +172,15 @@
                   <div class="col-5" id="bor">Username</div>
                   <div class="col-2" id="bor">Score</div>
                 </div>
+                {%for result in leaders %}
                 <div class="row justify-content-around py-2 mt-0" id="one">
-                  <div class="col-2" id="bor">4th</div>
-                  <div class="col-5" id="bor">Username</div>
+                  <div class="col-2" id="bor">{{forloop.counter|add:"3"}}</div>
+                  <div class="col-5" id="bor">{{result.user.username}}</div>
 
-                  <div class="col-2" id="bor">60</div>
+                  <div class="col-2" id="bor">{{result.total_score}}</div>
                 </div>
-                <div class="row justify-content-around py-2" id="one">
+                {% endfor %}
+                <!-- <div class="row justify-content-around py-2" id="one">
                   <div class="col-2 mid-align" id="bor">5th</div>
                   <div class="col-5" id="bor">Username</div>
                   <div class="col-2" id="bor">60</div>
@@ -181,7 +191,7 @@
                   <div class="col-5" id="bor">Username</div>
 
                   <div class="col-2" id="bor">60</div>
-                </div>
+                </div> -->
                 <div style="height: 56px; display: block"></div>
               </div>
             </div>

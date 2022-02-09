@@ -46,6 +46,9 @@ def home(request):
 @timer
 def leaderboard(request):
     tester = Player.objects.get(user=request.user)
+    obj = SetTime.objects.get(pk=1)
+    time = obj.final_time #final time format 2022-02-08 18:30:19+05
+    newtime = str(time)
     if request.user.is_authenticated:
         data = []
         rank=0
@@ -63,7 +66,7 @@ def leaderboard(request):
             page=p.page(page_num)
         except EmptyPage:
             page = p.page(1)
-        return render(request, "leaderboard.html", {"data": data,"rank":counter,"name":tester.user.username,"score":tester.total_score,"items":page})
+        return render(request, "leaderboard.html", {"data": data,"rank":counter,"name":tester.user.username,"score":tester.total_score,"items":page, "num":p,"time":newtime})
 
 
 # @login_required
@@ -78,7 +81,9 @@ def leaderboard(request):
 @login_required
 @timer
 def buffer(request,pk):
+    print("buff")
     l1 = []
+    lang=""
     for i in Submission.objects.all().filter(p_id=Player.objects.get(user=request.user), q_id=pk):
         l1.append(i)
         break
@@ -86,7 +91,8 @@ def buffer(request,pk):
         s=""
     else:
         s=l1[0].code
-    return JsonResponse({'key':s},status=200)
+        lang=l1[0].language
+    return JsonResponse({'key':s,'lang':lang},status=200)
 
 @login_required
 @timer
@@ -95,6 +101,7 @@ def contest(request):
     ques = Question.objects.filter(Q(junior=tester.junior) | Q(junior=None))
     obj = SetTime.objects.get(pk=1)
     time = obj.final_time #final time format 2022-02-08 18:30:19+05
+    newtime = str(time)
     l_status = []
     for que in ques:
         status = Submission.objects.filter(q_id=que, p_id=tester)
@@ -107,7 +114,7 @@ def contest(request):
             l_status.append(status)
     mylist = zip(ques, l_status)
     # print("hello")
-    return render(request, "trial1.html", {"mylist": mylist, "time":time})
+    return render(request, "trial1.html", {"mylist": mylist, "time":newtime})
 
 
 @login_required
@@ -115,8 +122,10 @@ def contest(request):
 def question(request, pk):
     ques = Question.objects.get(pk=pk)
     tester = Player.objects.get(user=request.user)
-
-    return render(request, "question.html", {"ques": ques,"score":tester.total_score})
+    obj = SetTime.objects.get(pk=1)
+    time = obj.final_time #final time format 2022-02-08 18:30:19+05
+    newtime = str(time)
+    return render(request, "question.html", {"ques": ques,"score":tester.total_score,"time":newtime})
 
 
 @login_required
@@ -129,6 +138,9 @@ def mysubmission(request, pk):
     rte=0
     cte=0
     mle=0
+    obj = SetTime.objects.get(pk=1)
+    time = obj.final_time #final time format 2022-02-08 18:30:19+05
+    newtime = str(time)
     for i in Submission.objects.all().filter(
         p_id=Player.objects.get(user=request.user), q_id=pk
     ):
@@ -145,7 +157,7 @@ def mysubmission(request, pk):
             cte+=1
         else:
             mle+=1
-    return render(request, "mysub.html", {"data": l1,"ac":ac,"rte":rte,"wa":wa,"tle":tle,"cte":cte,"mle":mle,"pk":pk})
+    return render(request, "mysub.html", {"data": l1,"ac":ac,"rte":rte,"wa":wa,"tle":tle,"cte":cte,"mle":mle,"pk":pk,"time":newtime})
 
 
 def get_upload_path(instance):
@@ -187,6 +199,9 @@ def clash_sub(request, pk):
     code = ""
     language = request.POST.get("language")
     s = ""
+    obj = SetTime.objects.get(pk=1)
+    time = obj.final_time #final time format 2022-02-08 18:30:19+05
+    newtime = str(time)
     if request.method == "POST":
         custom=True
         for key in request.POST:
@@ -292,13 +307,13 @@ def clash_sub(request, pk):
                 return render(
                     request,
                     "base.html",
-                    {"result": "All Correct", "testcase": cases,'score':scr,'pk':pk}
+                    {"result": "All Correct", "testcase": cases,'score':scr,'pk':pk,"time":newtime}
                 )
             else:
                 return render(
                     request,
                     "base.html",
-                    {"result": display_error, "testcase": cases, "error": errors,'score':scr,'pk':pk}
+                    {"result": display_error, "testcase": cases, "error": errors,'score':scr,'pk':pk,"time":newtime}
                 )
         else:
             return redirect("clash-contest")
@@ -354,6 +369,23 @@ def login_page(request):
     return render(request, "login.html")
 
 
+# @login_required
+# def logout_view(request):
+#     tester = Player.objects.get(user=request.user)
+#     data = []
+#     count = 0
+#     rank=0
+#     for user in Player.objects.order_by("-total_score"):
+#         count += 1
+#         if count < 6:
+#             data.append(user)
+#         if(tester==user):
+#             rank=count
+#         if(rank>0 and count>5):
+#             break
+#     logout(request)
+#     return render(request, "result.html", {"leaders": data,"rank":rank,"score":tester.total_score})
+
 @login_required
 def logout_view(request):
     tester = Player.objects.get(user=request.user)
@@ -362,11 +394,14 @@ def logout_view(request):
     rank=0
     for user in Player.objects.order_by("-total_score"):
         count += 1
-        if count < 6:
+        if count < 7:
             data.append(user)
         if(tester==user):
             rank=count
         if(rank>0 and count>5):
             break
     logout(request)
-    return render(request, "result.html", {"leaders": data,"rank":rank,"score":tester.total_score})
+    first=data.pop(0)
+    second=data.pop(0)
+    third=data.pop(0)
+    return render(request, "result.html", {"first":first,"second":second,"third":third,"leaders": data,"rank":rank,"tester":tester})

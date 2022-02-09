@@ -32,12 +32,14 @@
         <div class="container-fluid">
             <a class="navbar-brand navvi" href="#" style="padding: 0px;"><img src="{% static 'img/clashwhite.png' %}" alt="Clash Logo"
                     height="30px"></a>
-            <div class="navbar-brand navvi timer" href="#" if="timer" style="margin-left: 20px;">
-            <div
-                class="ml-6"
-                id="timer"
-                style="color: #ffffff; width: 15vh">
-            </div>                
+            <div class="navbar-brand navvi" href="#" id="timer2" style="margin-left: 20px;">
+                <div class="timer_container">
+                    <div class=" w-100 d-flex p-0 flex-grow-1" id="countdown">TIMER: 
+                        <span id="hours" class="timeritems"></span> :
+                        <span id="minutes" class="timeritems"></span> :
+                        <span id="seconds" class="timeritems"></span>
+                    </div>
+                  </div>              
             </div>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -47,10 +49,10 @@
             </button>
             <div class="collapse navbar-collapse stroke" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <!-- <li class="nav-item ">
-                        <a class="nav-link active navvi" aria-current="page"  href="../mysubs/{{ques.id}}"
+                    <li class="nav-item ">
+                        <a class="nav-link active navvi" aria-current="page"  href="{%url 'clash-mysub' 1%}"
                             style="margin-left: 10px;margin-right: 10px;">Submissions</a>
-                    </li> -->
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link navvi" aria-current="page" href="{%url 'clash-leaderboard'%}"
@@ -150,33 +152,9 @@
                         </div>
                     </div>
                     <!-- 1st box ends here -->
-                {%endfor%}
-<script>
-    //Timer
-    let countdown = '{{ time }}'; //in seconds
-    console.log('{{ time }}');
-    const timerBlock = document.querySelector('#timer');
-    const x = setInterval(() => {
-        countdown = countdown - 1;
-        let hours = Math.floor(countdown / 3600);
-        let minutes = Math.floor((countdown % 3600) / 60);
-        let seconds = Math.floor((countdown % 3600) % 60);
-        if (countdown < 0) {
-            timerBlock.innerHTML = 'Expired';
-            clearInterval(x);
-        }
-        if (hours < 10) {
-            hours = '0' + hours;
-        }
-        if (minutes < 10) {
-            minutes = '0' + minutes;
-        }
-        if (seconds < 10) {
-            seconds = '0' + seconds;
-        }
-        timerBlock.innerHTML = `${hours}:${minutes}:${seconds}`;
-    }, 1000);
-</script>                    
+                {%endfor%}        
+
+
                     <!-- </div>  -->
                 </div>
                 <!-- this is for space between cards and border like padding-bottom-->
@@ -195,5 +173,39 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
+
+    <script>
+        //Timer
+        (function () {
+        const second = 1000,
+              minute = second * 60,
+              hour = minute * 60,
+              day = hour * 24;
+      
+     
+        
+        const countDown = new Date('{{time}}').getTime(),
+            x = setInterval(function() {    
+      
+              const now = new Date().getTime(),
+                    distance = countDown - now;
+      
+            //   document.getElementById("days").innerText = Math.floor(distance / (day)),
+                document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+                document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+                document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+      
+              //do something later when date is reached
+              if (distance < 0) {
+                document.getElementById("headline").innerText = "";
+                document.getElementById("countdown").style.display = "";
+                document.getElementById("content").style.display = "";
+                clearInterval(x);
+                location.href="{%url 'logout'%}";
+              }
+              //seconds
+            }, 0)
+        }());
+    </script>
 
 </html>
