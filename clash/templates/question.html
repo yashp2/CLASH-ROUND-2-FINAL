@@ -43,7 +43,9 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+rel="stylesheet"
+  />
   <!-- <link rel="stylesheet" href="{% static '/css/coding_color.css' %}"> -->
   <link rel="stylesheet" href="{% static 'css/coding.css' %}">
   <link rel="stylesheet" href="{% static 'css/coding_color.css' %}">
@@ -59,7 +61,7 @@
           height="30px"></a>
       <div class="navbar-brand navvi timer" href="#" id="timer" style="margin-left: 20px;">
         <div class="timer_container">
-          <div class=" w-100 d-flex p-0 flex-grow-1" id="countdown">TIMER: 
+          <div class=" w-100 d-flex p-0 flex-grow-1" id="countdown">
               <span id="hours" class="timeritems"></span> :
               <span id="minutes" class="timeritems"></span> :
               <span id="seconds" class="timeritems"></span>
@@ -78,7 +80,7 @@
               style="margin-left: 10px;margin-right: 10px;">Question Hub</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link active navvi" aria-current="page" href="../mysubs/{{ques.id}}"
+            <a class="nav-link active navvi" aria-current="page" href="{%url 'clash-mysub' 1%}"
                 style="margin-left: 10px;margin-right: 10px;">Submissions</a> <!-- correct -->
           </li>
           <li class="nav-item">
@@ -193,10 +195,10 @@
         </div>
         <div>
           <a onclick="darkmode()" class="modebtns" id="darkmodebtn">
-            <i class="fas fa-moon "></i>
+            <i class="fas fa-moon-o"></i>
           </a>
           <a onclick="lightmode()" class="modebtns" id="lightmodebtn">
-            <i class="fas fa-sun"></i>
+            <i class="fas fa-sun-o"></i>
           </a>
         </div>
       </div>
@@ -273,7 +275,6 @@
   <script src="{% static 'ace-builds-master/src-noconflict/ext-language_tools.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/coding_editor.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/coding_script.js' %}"></script>
-  <script src="{% static 'js/src-navbar.js' %}" type="text/javascript" ></script>
   
   <!-- jquery -->
   <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->

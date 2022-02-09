@@ -64,7 +64,7 @@
                         alt="Clash Logo" height="30px"></a>
                 <div class="navbar-brand navvi timer" href="#" style="margin-left: 20px;">
                     <div class="timer_container">
-                        <div class=" w-100 d-flex p-0 flex-grow-1" id="countdown">TIMER: 
+                        <div class=" w-100 d-flex p-0 flex-grow-1" id="countdown">
                             <span id="hours" class="timeritems"></span> :
                             <span id="minutes" class="timeritems"></span> :
                             <span id="seconds" class="timeritems"></span>
@@ -199,20 +199,20 @@
                                     </td> -->
                                     <td>
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary button1" data-bs-toggle="modal" data-bs-target="#exampleModal{{forloop.counter}}">
+                                        <button type="button" class="btn  button1" data-bs-toggle="modal" data-bs-target="#exampleModal{{forloop.counter}}" style="background-color: #293b5f; color: white;">
                                             View
                                         </button>
                                         
                                         <!-- Modal -->
                                         <div class="modal fade" id="exampleModal{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
+                                            <div class="modal-dialog modal-dialog-scrollable">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">View submission </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body" style="max-height:300px">
-                                                    <textarea style="min-height:200px;max-height:300px;width:90%;background-color:#212529 ;resize:none;color:white">{{sub.code}}</textarea>
+                                                <div class="modal-body" style="max-height:700px">
+                                                    <textarea style="min-height:450px;max-height:600px;width:90%;background-color:#212529 ;resize:none;color:white" readonly>{{sub.code}}</textarea>
                                                 </div>
                                                 <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
