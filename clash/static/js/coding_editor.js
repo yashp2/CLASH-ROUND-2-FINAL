@@ -8,6 +8,7 @@ var editor = ace.edit("editor", {
 });
 editor.setOptions({
   enableBasicAutocompletion: true,
+  enableLiveAutocompletion: true,
 });
 
 // editor.setTheme("ace/theme/monokai");
