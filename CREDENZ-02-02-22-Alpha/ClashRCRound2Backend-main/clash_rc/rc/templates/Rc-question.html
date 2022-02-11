@@ -1,0 +1,41 @@
+
+{% extends 'Rc-Home.html' %}
+{% block body %}
+<h1>{{ques.id}}) {{ques.title}}</h1>
+<br>
+{{ques.body}}
+
+<form action="{%url 'rc-RC' ques.id%}" method='post'>
+            {%csrf_token%}
+        <h2>INPUT </h2>
+<textarea id="3rev" name="Rc_input" rows="4" cols="50">{{input}}</textarea>
+            <br>
+<h2>OUTPUT</h2>
+<textarea id="3ev" name="Rc-display" rows="4" cols="50">{{output}}</textarea>
+            <br>
+            <button value="Rc-Go" name="cust" type="submit">Submit</button>
+                    </form>
+
+                    
+  <h2>Please enter your code here: </h2>
+        <form action="{%url 'rc-sub' ques.id%}" method='post'>
+            {%csrf_token%}
+<textarea id="vi" name="input" rows="4" cols="50">{{code}}</textarea>
+            <br>
+            <select name="language" id="textformat">
+  <option value="py"> Python</option>
+  <option value="cpp"> C++</option>
+  <option value="c"> C </option>
+            </select>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+
+
+        <form action="{%url 'rc-mysub' ques.id%}" method='post'>
+            {%csrf_token%}
+            <br><br>
+            <button type="submit">My Submissions</button>
+        </form>
+
+{%endblock%}

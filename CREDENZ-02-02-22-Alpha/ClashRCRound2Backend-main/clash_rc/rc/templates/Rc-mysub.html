@@ -1,0 +1,33 @@
+{% extends 'Rc-Home.html' %}
+{% block body %}    
+
+
+<style>
+    table, th, td{
+        border:  1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<table>
+    <tr>
+        <th>Score</th>
+        <th>Time</th>
+        <th>Code</th>
+        <th>Status</th>
+        <th>Language</th>
+    </tr>
+    {% for sub in data %}
+    <tr>
+        <td>{{sub.score}}</td>
+        <td>{{sub.time}}</td>
+        <td>{{sub.code}}</td>
+        <td>{{sub.status}}</td>
+        <td>{{sub.language}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+{%endblock%}

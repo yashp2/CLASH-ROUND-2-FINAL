@@ -1,0 +1,32 @@
+{% extends 'home.html' %}
+{% block body %}
+<h1>{{ques.id}}) {{ques.title}}</h1>
+<br>
+{{ques.body}}
+
+<h2>Please enter your code here: </h2>
+<form action="{%url 'clash-sub' ques.id%}" method='post'>
+  {%csrf_token%}
+  <textarea id="w3revi" name="input" rows="4" cols="50">{{code}}</textarea>
+  <br>
+  <select name="language" id="textformat">
+    <option value="py"> Python</option>
+    <option value="cpp"> C++</option>
+    <option value="c"> C </option>
+  </select>
+  <br>
+  <button type="submit">Submit</button>
+  <h2>Custom </h2>
+  <textarea id="w3rev" name="custom_input" rows="4" cols="50">{{input}}</textarea>
+  <br>
+  {{error}}<br>
+  <textarea id="w3ev" name="display" rows="4" cols="50">{{output}}</textarea>
+  <br>
+  <button value="Go" name="cust" type="submit">Submit</button>
+</form>
+<form action="{%url 'clash-mysub' ques.id%}" method='post'>
+  {%csrf_token%}
+  <br><br>
+  <button type="submit">My Submissions</button>
+</form>
+  {%endblock%}

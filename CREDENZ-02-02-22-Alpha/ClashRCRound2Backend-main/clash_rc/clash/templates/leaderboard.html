@@ -1,0 +1,41 @@
+{% extends 'home.html' %}
+{% block body %}
+<style>
+		table, th, td{
+			border:  1px solid black;
+			border-collapse: collapse;
+		}
+</style>
+	<h1><center>Leaderboard</center></h1>
+
+	<table>
+		<tr>
+			<th>Rank</th>
+			<th>Username</th>
+			<th>Total</th>
+			<th>Question 1</th>
+			<th>Question 2</th>
+			<th>Question 3</th>
+			<th>Question 4</th>
+			<th>Question 5</th>
+			<th>Question 6</th>
+		</tr>
+		{% for result in data %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td>{{result.user.username}}</td>
+			<td>{{result.total_score}}</td>
+			<td>{{result.ques1}}</td>
+			<td>{{result.ques2}}</td>
+			<td>{{result.ques3}}</td>
+			<td>{{result.ques4}}</td>
+			<td>{{result.ques5}}</td>
+			<td>{{result.ques6}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	<br>
+{%endblock%}
+
+</body>
+</html>

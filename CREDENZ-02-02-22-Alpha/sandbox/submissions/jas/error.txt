@@ -1,0 +1,5 @@
+User_Data/jas/codeCPP.cpp: In function ‘int main()’:
+User_Data/jas/codeCPP.cpp:8:13: warning: division by zero [-Wdiv-by-zero]
+    8 |     cout<<(1/0);
+      |            ~^~
+Floating point exception (core dumped)

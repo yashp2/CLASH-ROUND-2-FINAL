@@ -1,0 +1,26 @@
+
+<style>
+		table, th, td{
+			border:  1px solid black;
+			border-collapse: collapse;
+		}
+</style>
+	<h1><center>Result</center></h1>
+
+	<table>
+		<tr>
+			<th>Rank</th>
+			<th>Username</th>
+			<th>Total</th>
+		</tr>
+		{% for result in leaders %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td>{{result.user.username}}</td>
+			<td>{{result.total_score}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	<br>
+</body>
+</html>
