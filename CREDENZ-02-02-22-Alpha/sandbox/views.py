@@ -1,19 +1,19 @@
 import subprocess
 from clash.models import *
-import resource
+# import resource
 import os
 import re
 
 
-def set_limit_resource(language):
-    time_limit = 1
-    memory_limit = 104000000
+# def set_limit_resource(language):
+#     time_limit = 1
+#     memory_limit = 104000000
 
-    def setlimits():
-        resource.setrlimit(resource.RLIMIT_CPU, (time_limit, time_limit))
-        resource.setrlimit(resource.RLIMIT_AS, (memory_limit, memory_limit))
+#     def setlimits():
+#         resource.setrlimit(resource.RLIMIT_CPU, (time_limit, time_limit))
+#         resource.setrlimit(resource.RLIMIT_AS, (memory_limit, memory_limit))
 
-    return setlimits
+#     return setlimits
 
 
 def comment_remover(code):
@@ -88,7 +88,7 @@ def execute(name, test_input, language):
         a = subprocess.run(
             s,
             shell=True,
-            preexec_fn=set_limit_resource(language),
+            # preexec_fn=set_limit_resource(language),
             stdin=test_input,
             stdout=f1,
             stderr=f2,
@@ -110,7 +110,7 @@ def execute(name, test_input, language):
             a = subprocess.Popen(
                 exe,
                 shell=True,
-                preexec_fn=set_limit_resource(language),
+                # preexec_fn=set_limit_resource(language),
                 stdin=test_input,
                 stdout=f1,
                 stderr=f2,

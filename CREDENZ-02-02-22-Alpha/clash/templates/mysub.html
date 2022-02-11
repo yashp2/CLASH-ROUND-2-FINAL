@@ -1,35 +1,3 @@
-<!-- {% comment %} 
-{% block body %}    
-
-
-<style>
-    table, th, td{
-        border:  1px solid black;
-        border-collapse: collapse;
-    }
-</style>
-
-<table>
-    <tr>
-        <th>Score</th>
-        <th>Time</th>
-        <th>Code</th>
-        <th>Status</th>
-        <th>Language</th>
-    </tr>
-    {% for sub in data %}
-    <tr>
-        <td>{{sub.score}}</td>
-        <td>{{sub.time}}</td>
-        <td>{{sub.code}}</td>
-        <td>{{sub.status}}</td>
-        <td>{{sub.language}}</td>
-    </tr>
-    {% endfor %}
-</table>
-
-{%endblock%} {% endcomment %} -->
-
 {%load static%}
 
 <!DOCTYPE html>
@@ -193,6 +161,8 @@
                                         <!-- </div> -->
                                     </td>
                                     <td style="display:none"><textarea id="textarea{{forloop.counter}}">{{sub.code}}</textarea></td>
+                                    <td style="display:none"><h1 id="sublang{{forloop.counter}}">{{sub.language}}</h1></td>
+                                    <!-- <td>{{sub.lang}}</td> -->
                                     <!-- <td class="main-table main-table-1"> <button type="button" href="#"
                                             style="background-color: #293b5f; color: white; margin-left: 20px;"
                                             class="btn">View</button>
@@ -211,9 +181,14 @@
                                                 <h5 class="modal-title" id="exampleModalLabel">View submission </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body" style="max-height:700px">
-                                                    <textarea style="min-height:450px;max-height:600px;width:90%;background-color:#212529 ;resize:none;color:white" readonly>{{sub.code}}</textarea>
+                                                <div class="modal-body">
+                                                    <!-- <textarea style="min-height:450px;max-height:600px;width:90%;background-color:#212529 ;resize:none;color:white" readonly>{{sub.code}}</textarea> -->
+                                                    <div class="codeeditdiv"  style="height:420px " media="screen">
+                                                        <div id="editor{{forloop.counter}}" style="min-height:100%;max-height:600px;width:100%;" media="screen">{{sub.code}}
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                
                                                 <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                 <button type="button" class="btn btn-primary" id="copybtn{{forloop.counter}}">Copy Code</button>
@@ -263,10 +238,10 @@
                                                 let cte=Number(document.getElementById('cte').value);
                                                 let mle=Number(document.getElementById('mle').value);
                                                 
-                                                console.log(cte);
-                                                console.log(mle);
+                                                // console.log(cte);
+                                                // console.log(mle);
                                                 // parseInt(ac);
-                                                console.log(typeof(ac));
+                                                // console.log(typeof(ac));
                                                 $(document).ready(function () {
                                                     var ctx = $("#mycanvas").get(0).getContext("2d");
 
@@ -394,10 +369,14 @@
             </div>
         </footer>
 </body>
-
+<script src="{% static 'ace-builds-master/src-noconflict/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="../static/ace-builds-master/src-noconflict/ext-language_tools.js"></script> -->
+<script src="{% static 'ace-builds-master/src-noconflict/ext-language_tools.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
+
+
     <script>
         document.onload=f1();
         function f1(){
@@ -407,19 +386,36 @@
         for(let i=1;i<=a;i++){
             (document.querySelector(`#copybtn${i}`)).addEventListener('click', function() {
             let ctxt=document.getElementById(`textarea${i}`).value;
-            
-            // console.log(ctxt);
-            
             navigator.clipboard.writeText(ctxt);
             });
+            let b=document.getElementById(`sublang${i}`).innerHTML;
+            // console.log(b);
+            {
+            let xgxh= document.getElementById(`editor${i}`);
+            const editor = ace.edit(xgxh, {
+            wrap: true,
+            });
+            if(b=='py' )
+            {
+                editor.session.setMode("ace/mode/python");
+            }
+            else{
+                editor.session.setMode("ace/mode/c_cpp");
+            }
+            editor.setTheme("ace/theme/dracula");
+            editor.setReadOnly(true);
+            // editor.setValue(ctxt);
+            
+            }
         }
         
         
         let qs=document.getElementById('qno').innerHTML;
-        console.log(qs);
+        // console.log(qs);
         document.getElementById(`qno${qs}`).classList.add("nav-item-1");
     }
     </script>
+
     <script>
         //Timer
         (function () {

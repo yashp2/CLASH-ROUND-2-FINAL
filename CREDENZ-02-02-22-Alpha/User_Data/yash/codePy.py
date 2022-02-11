@@ -37,5 +37,4 @@ def seccomp_filter():
 
 seccomp_filter()
 
-/*your code goes here*/
-print("hello");
+print("hello")
