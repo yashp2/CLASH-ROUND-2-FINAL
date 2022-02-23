@@ -1,0 +1,171 @@
+.navbarr {
+  background-color: #1f2833;
+}
+
+.stroke ul li a,
+.stroke ul li a:after,
+.stroke ul li a:before {
+  transition: all 0.5s;
+  color: white;
+}
+.stroke ul li a:hover {
+  color: lightgrey;
+}
+
+.stroke ul li a {
+  position: relative;
+}
+
+.stroke ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: ".";
+  color: transparent;
+  background: #aaa;
+  height: 1px;
+}
+.stroke ul li a:hover:after {
+  width: 100%;
+}
+
+/* .navbar-toggler{
+    color: white;
+    background-color: red;
+} */
+.modal-header,
+.modal-footer {
+  background-color: #1f2833;
+  color: white;
+  border: 0px;
+  /* background-color: #293B5F ; */
+}
+
+.modalclosebtn {
+  background-color: #222222;
+}
+
+.modalrunbtn,
+.modalclosebtn {
+  color: white;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  box-shadow: 4px 4px #000000;
+  /* margin-bottom: 15px; */
+}
+.containermain {
+  background-color: #131313;
+}
+
+.lcontup,
+.modal-body {
+  background-color: #131313;
+  color: white;
+}
+
+.lcontq {
+  background-color: #293b5f;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  box-shadow: 4px 4px #000000;
+}
+
+.questionbar > a {
+  color: white;
+}
+
+#questionarea,
+#sampleinput,
+#custominput,
+#output {
+  background-color: #222222;
+  color: white;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  box-shadow: 4px 4px #000000;
+  margin-bottom: 15px;
+}
+
+.langchoose {
+  background-color: #293b5f;
+  border: 1px solid #293b5f;
+  border-radius: 5px;
+  box-shadow: 4px 4px #000000;
+  color: white;
+}
+
+.choosefile {
+  background-color: #293b5f;
+  border: 1px solid #293b5f;
+  border-radius: 5px;
+  box-shadow: 4px 4px #000000;
+  color: white;
+}
+
+.loadbuffer {
+  background-color: #293b5f;
+  border: 1px solid #293b5f;
+  border-radius: 5px;
+  box-shadow: 4px 4px #000000;
+  color: white;
+}
+
+.rbtnd {
+  /* background-color: #001E3C;
+    border: 1px solid #001E3C; */
+  background-color: #293b5f;
+  border: 1px solid #293b5f;
+  border-radius: 5px;
+  box-shadow: 4px 4px #000000;
+  color: white;
+}
+
+.footerr {
+  background-color: #1f2833;
+  color: white;
+}
+
+.navvi {
+  color: #eae1e1;
+}
+.clear {
+  clear: both;
+  height: 60px;
+}
+
+.modebtns {
+  background-color: #222222;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  box-shadow: 4px 4px #000000;
+  color: white;
+}
+.modebtns:hover{
+  color: white;
+  cursor: pointer;
+}
+.ace-dracula {
+  background-color: transparent;
+}
+
+.rbtnd:hover,
+.loadbuffer:hover,
+.choosefile:hover,
+.langchoose:hover {
+  background-color: #1d273b;
+  color: white;
+}
+
+.activeques{
+  border-bottom: 2px solid white;
+}
+
+@media (max-width: 992px) {
+  .pisblogo {
+    display: none;
+  }
+}
