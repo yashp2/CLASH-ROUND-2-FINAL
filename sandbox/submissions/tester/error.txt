@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "User_Data/tester/codePy.py", line 40, in <module>
+    1/0
+ZeroDivisionError: division by zero

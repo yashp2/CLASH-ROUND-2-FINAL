@@ -1,0 +1,453 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Submissions</title>
+    <!-- <script type="text/javascript" src="../static/js/jquery-2.1.4.min.js"></script> -->
+    <script  src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+    <script  src="{% static 'js/Chart.js' %}"></script>
+    <!-- <script type="text/javascript" src="../static/js/Chart.js"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/submissions.css"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/submissions.css' %}">
+    <link rel="stylesheet" href="{% static 'css/coding_color.css' %}"> 
+       <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+</head>
+    
+<body>
+    <h1 style="display:none" id="qno">{{pk}}</h1>
+    <div class="">
+        <!-- Navbar goes here -->
+        <nav class="navbar navbar-expand-lg navbarr">
+            <div class="container-fluid">
+                <a class="navbar-brand navvi" href="#" style="padding: 0px;"><img src="{% static 'img/clashwhite.png' %}"
+                        alt="Clash Logo" height="30px"></a>
+                <div class="navbar-brand navvi timer" href="#" style="margin-left: 20px;">
+                    <div class="timer_container">
+                        <div class=" w-100 d-flex p-0 flex-grow-1" id="countdown">
+                            <span id="hours" class="timeritems"></span> :
+                            <span id="minutes" class="timeritems"></span> :
+                            <span id="seconds" class="timeritems"></span>
+                        </div>
+                      </div>                     
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars" style="color: white;"></i>
+                </button>
+                <div class="collapse navbar-collapse stroke" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item ">
+                            <a class="nav-link active navvi" aria-current="page" href="{% url 'clash-contest' %}"
+                                style="margin-left: 10px;margin-right: 10px;">Question Hub</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link navvi" aria-current="page" href="{% url 'clash-leaderboard' %}"
+                                style="margin-left: 10px;margin-right: 10px;">Leaderboard</a>
+                        </li>
+                      
+                        <li class="nav-item navvi">
+                            <a class="nav-link navvi" style="margin-left: 10px;margin-right: 10px;cursor:pointer;" data-bs-toggle="modal" data-bs-target="#LogoutModal">Logout</a>
+
+              <!-- <button type="button" class="btn btn-primary">
+                Launch demo modal
+              </button> -->
+              
+              <!-- Modal -->
+              <div class="modal fade" id="LogoutModal" tabindex="-1" aria-labelledby="LogoutModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="LogoutModalLabel">Alert!</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                      Are you sure you want to logout ?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                      <a href="{%url 'logout'%}"  class="btn btn-danger">Logout</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                        </li>
+                    </ul>
+                </div>
+                <a class="navbar-brand navvi pisblogo" href="#" style="padding: 0px; margin-left: 20px;"><img
+                        src="{% static 'img/pisblogo.png' %}" alt="Clash Logo" height="30px"></a>
+            </div>
+        </nav>
+        <textarea style="display:none" id="ac">{{ac}}</textarea>
+        <textarea style="display:none" id="rte">{{rte}}</textarea>
+        <textarea style="display:none" id="wa">{{wa}}</textarea>
+        <textarea style="display:none" id="tle">{{tle}}</textarea>
+        <textarea style="display:none" id="cte">{{cte}}</textarea>
+        <textarea style="display:none" id="mle">{{mle}}</textarea>
+        <div class="container-1">
+            <div class="grid">
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <ul class="nav-1 nav nav-pills justify-content-between ">
+                            <li class="nav-item">
+                                <a class="nav-link   nav-link-1" style="color: white;" aria-current="page" href="./1"
+                                    role="tab" data-toggle="tab" id="qno1">Problem 1</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-1" style="color: white;" href="./2" role="tab"
+                                    data-toggle="tab" id="qno2">Problem
+                                    2</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-1" style="color: white;" href="./3" role="tab"
+                                    data-toggle="tab" id="qno3">Problem
+                                    3</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-1" style="color: white;" href="./4" role="tab"
+                                    data-toggle="tab" id="qno4">Problem
+                                    4</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-1" style="color: white;" href="./5" role="tab"
+                                    data-toggle="tab" id="qno5">Problem
+                                    5</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-1" style="color: white;" href="./6" role="tab"
+                                    data-toggle="tab" id="qno6">Problem
+                                    6</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active" id="prob1">1</div>
+                            <div role="tabpanel" class="tab-pane fade" id="prob2">2</div>
+                            <div role="tabpanel" class="tab-pane fade" id="prob3">3</div>
+                            <div role="tabpanel" class="tab-pane fade" id="prob4">4</div>
+                        </div>
+                        <div class="scrollable">
+                        <table style="text-align: center;" class="table table-striped rside table-1" id="table001">
+                            <thead>
+                                <tr>
+                                    <th class="main-table main-table-1" scope="col">Sr.No</th>
+                                    <th class="main-table main-table-1" scope="col">Time</th>
+                                    <th class="main-table main-table-1" scope="col">Score</th>
+                                    <th class="main-table main-table-1" scope="col" id="tablesol">Solution</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <h1 id="laste" style="display:none">{{data|length}}</h1>
+                            {% for sub in data %}
+                            <tr>
+                                    <th class="main-table main-table-1" scope="row">{{forloop.counter}}</th>
+                                    <th class="main-table main-table-1" scope="row">{{sub.time}}</th>
+                                    <!-- <td class="main-table main-table-1">{{sub.status}}</td>  -->
+                                    <td>
+                                        <!-- <div class="progress my-progress"> -->
+                                            <!-- <div class="progress-bar progress-bar-striped bg-info role=" progressbar"
+                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{ sub.accuracy}}%"></div> -->
+                                                <h3 style="color:white">{{sub.score}}</h3>
+                                        <!-- </div> -->
+                                    </td>
+                                    <td style="display:none"><textarea id="textarea{{forloop.counter}}">{{sub.code}}</textarea></td>
+                                    <td style="display:none"><h1 id="sublang{{forloop.counter}}">{{sub.language}}</h1></td>
+                                    <!-- <td>{{sub.lang}}</td> -->
+                                    <!-- <td class="main-table main-table-1"> <button type="button" href="#"
+                                            style="background-color: #293b5f; color: white; margin-left: 20px;"
+                                            class="btn">View</button>
+                                    </td> -->
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn  button1" data-bs-toggle="modal" data-bs-target="#exampleModal{{forloop.counter}}" style="background-color: #293b5f; color: white;">
+                                            View
+                                        </button>
+                                        
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">View submission </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <!-- <textarea style="min-height:450px;max-height:600px;width:90%;background-color:#212529 ;resize:none;color:white" readonly>{{sub.code}}</textarea> -->
+                                                    <div class="codeeditdiv"  style="height:420px " media="screen">
+                                                        <div id="editor{{forloop.counter}}" style="min-height:100%;max-height:600px;width:100%;" media="screen">{{sub.code}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" id="copybtn{{forloop.counter}}">Copy Code</button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                        {% endfor %}                                   
+                            </tbody>
+                        </table></div>
+                    </div>
+                    
+                    <div class="rside-full col-11 col-lg-4">
+                        <div class="row">
+                            <div style="display: flex;" class="rside goto-prob">
+                                <h4 style="color: white;">Problem Statement</h4>
+                                <a type="button"
+                                href="{%url 'clash-question' pk%}" 
+                                    style="background-color: #293b5f; color: white; margin-left: 20px;"
+                                    class="btn">View</a>
+                            </div>
+                        </div>
+                        <!-- <div class="row ">
+                        <div class="rside status-box-1 ">
+                            <h4 style="color: white;" class="rside-head">Status : Completed</h4>
+                            <hr style="color: white;" class="rside-line">
+                            <div class="percentage-done">100%</div>
+                        </div>
+                    </div> -->
+                        <div class="row">
+                            <div class="rside  status-box">
+                                <h4 style="color: white;" class="rside-head">Statistics</h4>
+                                <hr style="color: white;" class="rside-line">
+                                <div class="row">
+                                    <div class="col-12" style="text-align: center;">
+                                        <!-- <div class="rounded-circle">
+                                        <div class="border border-dark "></div>
+                                    </div> -->
+                                        <canvas id="mycanvas" class="pie-custom">
+                                            <script>
+                                                let ac=Number(document.getElementById('ac').value);
+                                                let tle=Number(document.getElementById('tle').value);
+                                                let rte=Number(document.getElementById('rte').value);
+                                                let wa=Number(document.getElementById('wa').value);
+                                                let cte=Number(document.getElementById('cte').value);
+                                                let mle=Number(document.getElementById('mle').value);
+                                                
+                                                // console.log(cte);
+                                                // console.log(mle);
+                                                // parseInt(ac);
+                                                // console.log(typeof(ac));
+                                                $(document).ready(function () {
+                                                    var ctx = $("#mycanvas").get(0).getContext("2d");
+
+                                                    //pie chart data
+                                                    //sum of values = 360
+                                                    var data = [
+                                                        {
+                                                            value: ac,
+                                                            color: "green",
+                                                            highlight: "lightgreen",
+                                                            label: "All Clear"
+                                                        },
+                                                        {
+                                                            value: wa,
+                                                            color: "red",
+                                                            highlight: "maroon",
+                                                            label: "Wrong Answer"
+                                                        },
+                                                        {
+                                                            value: tle,
+                                                            color: "orange",
+                                                            highlight: "yellow",
+                                                            label: "Time Limit Exceeded"
+                                                        },
+                                                        {
+                                                            value: rte,
+                                                            color: "burlywood",
+                                                            highlight: "brown",
+                                                            label: "Run Time Error"
+                                                        },
+                                                        {
+                                                            value: cte,
+                                                            color: "blue",
+                                                            highlight: "aqua",
+                                                            label: "Common Table Expression"
+                                                        },
+                                                        {
+                                                            value: mle,
+                                                            color: "#311b92",
+                                                            highlight: "#7c4dff",
+                                                            label: "Maximum likelihood estimation"
+                                                        },
+                                                        
+                                                    ];
+
+                                                    //draw
+                                                    var piechart = new Chart(ctx).Pie(data);
+                                                });
+                                            </script>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div style="background-color: green;" class="circle-dot">
+                                                            </div>
+                                                        </td>
+                                                        <td style="color: white;">AC</td>
+                                                        <td style="color: white;">{{ac}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div style="background-color: red;" class="circle-dot">
+                                                            </div>
+                                                        </td>
+                                                        <td style="color: white;">WA</td>
+                                                        <td style="color: white;">{{wa}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div style="background-color: orange;" class="circle-dot">
+                                                            </div>
+                                                        </td>
+                                                        <td style="color: white;">TLE</td>
+                                                        <td style="color: white;">{{tle}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div style="background-color: burlywood;"
+                                                                class="circle-dot">
+                                                            </div>
+                                                        </td>
+                                                        <td style="color: white;">RTE</td>
+                                                        <td style="color: white;">{{rte}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div style="background-color: blue;"
+                                                                class="circle-dot">
+                                                            </div>
+                                                        </td>
+                                                        <td style="color: white;">CTE</td>
+                                                        <td style="color: white;">{{cte}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div style="background-color: #311b92;"
+                                                                class="circle-dot">
+                                                            </div>
+                                                        </td>
+                                                        <td style="color: white;">MLE</td>
+                                                        <td style="color: white;">{{mle}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        <footer class="text-center fixed-bottom footerr">
+            <div class="container-fluid">
+                <div class="footer-text pt-3 pb-3">PISB <span>&copy</span></div>
+            </div>
+        </footer>
+</body>
+<script src="{% static 'ace-builds-master/src-noconflict/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="../static/ace-builds-master/src-noconflict/ext-language_tools.js"></script> -->
+<script src="{% static 'ace-builds-master/src-noconflict/ext-language_tools.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+
+    <script>
+        document.onload=f1();
+        function f1(){
+        let a=Number(document.getElementById('laste').innerHTML);
+        // console.log(typeof a);
+        
+        for(let i=1;i<=a;i++){
+            (document.querySelector(`#copybtn${i}`)).addEventListener('click', function() {
+            let ctxt=document.getElementById(`textarea${i}`).value;
+            navigator.clipboard.writeText(ctxt);
+            });
+            let b=document.getElementById(`sublang${i}`).innerHTML;
+            // console.log(b);
+            {
+            let xgxh= document.getElementById(`editor${i}`);
+            const editor = ace.edit(xgxh, {
+            wrap: true,
+            });
+            if(b=='py' )
+            {
+                editor.session.setMode("ace/mode/python");
+            }
+            else{
+                editor.session.setMode("ace/mode/c_cpp");
+            }
+            editor.setTheme("ace/theme/dracula");
+            editor.setReadOnly(true);
+            // editor.setValue(ctxt);
+            
+            }
+        }
+        
+        
+        let qs=document.getElementById('qno').innerHTML;
+        // console.log(qs);
+        document.getElementById(`qno${qs}`).classList.add("nav-item-1");
+    }
+    </script>
+
+<script>
+    //Timer
+    (function () {
+    const second = 1000,
+          minute = second * 60,
+          hour = minute * 60,
+          day = hour * 24;
+  
+ 
+    
+    const countDown = new Date('{{time}}').getTime(),
+        x = setInterval(function() {    
+  
+          const now = new Date().getTime(),
+                distance = countDown - now;
+  
+        //   document.getElementById("days").innerText = Math.floor(distance / (day)),
+            document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+            document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+            document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+  
+          //do something later when date is reached
+          if (distance < 0) {
+            document.getElementById("hours").innerText = 0;
+            document.getElementById("minutes").innerText = 0;
+            document.getElementById("seconds").innerText = 0;
+            clearInterval(x);
+            window.location.reload();
+            // location.href="{%url 'logout'%}";
+          }
+          //seconds
+        }, 0)
+    }());
+</script>
+</html>
