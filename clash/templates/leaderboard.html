@@ -107,9 +107,39 @@
                   style="margin-left: 10px;margin-right: 10px;">Submissions</a> <!-- correct -->
             </li>
             <li class="nav-item">
-              <a class="nav-link navvi" aria-current="page" href="{%url 'clash-home'%}"
-                  style="margin-left: 10px;margin-right: 10px;">Instructions</a>
-            </li>
+              <a class="nav-link navvi" style="margin-left: 10px;margin-right: 10px;cursor:default;" data-bs-toggle="modal" data-bs-target="#iModal">Instructions</a>
+  
+                  <!-- <button type="button" class="btn btn-primary">
+                      Launch demo modal
+                  </button> -->
+                  
+                  <!-- Modal -->
+                  <div class="modal fade" id="iModal" tabindex="-1" aria-labelledby="LogoutModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                          <h5 class="modal-title" id="LogoutModalLabel">Instructions!</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body text-center " style="text-align: left;">
+                            <ol>
+                              <li>
+                                This round comprises of 6 questions. All questions have marketing scheme +100 for right answer.
+                              </li>
+                              <li>
+                                Please play the game in full screen (Fn+F11) for better resolution.
+                              </li>
+                            </ol>
+                            
+                          </div>
+                          <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <!-- <button type="button" class="btn btn-danger">Logout</button> -->
+                          </div>
+                      </div>
+                      </div>
+                  </div>
+          </li>
             <!-- <li class="nav-item">
               <a
                 class="nav-link navvi"
@@ -184,14 +214,13 @@
 
     <!-- your code goes here -->
 
-    <div class="row maincnt">
-      <div class="col-md-3 col-sm-12">
+    <div class="maincnt">
         <div class="card maincard">
           <div
             class="card-header d-flex flex-column justify-content-center align-items-center"
           >
-            <p class="circle">U</p>
-            {{name}}
+            <p class="circle" id="initl">U</p>
+            <h2 id="initn">{{name}}</h2>
           </div>
           <div class="card-body">
             <div class="row first">
@@ -214,9 +243,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-9 col-sm-12">
-        <div class="container">
+      <div class="tabdiv">
+        <div class="container tdiv">
 			<table class="table">
 				<thead style="background-color: #293b5f; color: rgb(255, 255, 255)">
 			<tr>
@@ -346,6 +374,12 @@
           //seconds
         }, 0)
     }());
+
+   let a= document.getElementById('initn').textContent;
+   let b=a[0];
+   b=b.toUpperCase();
+   document.getElementById('initl').textContent=b;
+   
 </script>
 
 </html>

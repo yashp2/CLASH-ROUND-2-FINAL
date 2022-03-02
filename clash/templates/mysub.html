@@ -47,6 +47,40 @@
                 </button>
                 <div class="collapse navbar-collapse stroke" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link navvi" style="margin-left: 10px;margin-right: 10px;cursor:default;" data-bs-toggle="modal" data-bs-target="#iModal">Instructions</a>
+                
+                                <!-- <button type="button" class="btn btn-primary">
+                                    Launch demo modal
+                                </button> -->
+                                
+                                <!-- Modal -->
+                                <div class="modal fade" id="iModal" tabindex="-1" aria-labelledby="LogoutModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="LogoutModalLabel">Instructions!</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-center " style="text-align: left;">
+                                          <ol>
+                                            <li>
+                                              This round comprises of 6 questions. All questions have marketing scheme +100 for right answer.
+                                            </li>
+                                            <li>
+                                              Please play the game in full screen (Fn+F11) for better resolution.
+                                            </li>
+                                          </ol>
+                                          
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <!-- <button type="button" class="btn btn-danger">Logout</button> -->
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                        </li>
                         <li class="nav-item ">
                             <a class="nav-link active navvi" aria-current="page" href="{% url 'clash-contest' %}"
                                 style="margin-left: 10px;margin-right: 10px;">Question Hub</a>
@@ -136,11 +170,11 @@
                             <div role="tabpanel" class="tab-pane fade" id="prob3">3</div>
                             <div role="tabpanel" class="tab-pane fade" id="prob4">4</div>
                         </div>
-                        <div class="scrollable">
+                        <div >
                         <table style="text-align: center;" class="table table-striped rside table-1" id="table001">
                             <thead>
                                 <tr>
-                                    <th class="main-table main-table-1" scope="col">Sr.No</th>
+                                    <th class="main-table main-table-1" scope="col" >Sr.No</th>
                                     <th class="main-table main-table-1" scope="col">Time</th>
                                     <th class="main-table main-table-1" scope="col">Score</th>
                                     <th class="main-table main-table-1" scope="col" id="tablesol">Solution</th>
@@ -150,14 +184,14 @@
                                 <h1 id="laste" style="display:none">{{data|length}}</h1>
                             {% for sub in data %}
                             <tr>
-                                    <th class="main-table main-table-1" scope="row">{{forloop.counter}}</th>
+                                    <th class="main-table main-table-1" scope="row" id="ssrrnnoo">{{forloop.counter}}</th>
                                     <th class="main-table main-table-1" scope="row">{{sub.time}}</th>
                                     <!-- <td class="main-table main-table-1">{{sub.status}}</td>  -->
                                     <td>
                                         <!-- <div class="progress my-progress"> -->
                                             <!-- <div class="progress-bar progress-bar-striped bg-info role=" progressbar"
                                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{ sub.accuracy}}%"></div> -->
-                                                <h3 style="color:white">{{sub.score}}</h3>
+                                                <h6 style="color:white">{{sub.score}}</h6>
                                         <!-- </div> -->
                                     </td>
                                     <td style="display:none"><textarea id="textarea{{forloop.counter}}">{{sub.code}}</textarea></td>
@@ -200,7 +234,13 @@
                                 </tr>
                         {% endfor %}                                   
                             </tbody>
-                        </table></div>
+                        </table>
+                        <div id="ssrrnnood" style="text-align: center;color: white;"><h2 >No Submissions yet</h2>
+                        <!-- <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit tempore magni beatae vero dolore pariatur quo. Dolore vitae saepe repellat. Fugiat, nemo non! Aliquid corrupti perspiciatis officia ea laborum esse odio, asperiores ratione pariatur nam molestiae illo repellendus tenetur consequuntur voluptatum. Libero, magnam! Quo, velit cumque sunt et esse ut sed animi atque quam minima natus nihil est dignissimos at alias neque facere laboriosam aliquid? Id nihil eos provident error porro perspiciatis odit, adipisci, alias modi at itaque soluta eius aliquid consequuntur unde enim debitis omnis nesciunt aperiam! Quo nesciunt, placeat dignissimos labore harum voluptas doloribus accusantium alias perspiciatis, cumque excepturi eaque et dolorum architecto explicabo dolore aspernatur ex optio. Numquam, repudiandae error quam voluptatem illo in nisi fuga provident debitis itaque modi obcaecati, facere eligendi nobis repellendus. Numquam consectetur quos blanditiis maiores dolore. Impedit molestias dolore vitae quam ut error doloremque beatae quisquam, cupiditate quia ea architecto delectus magnam ducimus! Voluptate rem eius nemo voluptatum neque aliquam repudiandae enim praesentium incidunt sequi voluptatibus nostrum qui recusandae eaque, cupiditate animi debitis rerum. Veniam libero, similique magni cumque, dolor sequi neque ea ducimus iusto nihil sint voluptatem odio deleniti quasi, quidem molestias adipisci? Omnis doloribus explicabo ipsum quaerat nobis dicta possimus reiciendis accusantium. Obcaecati quas, quis dolore adipisci maxime nemo eum, facilis tenetur possimus iusto sunt cupiditate cumque doloribus mollitia quisquam animi autem beatae quasi amet nesciunt? Voluptates architecto deleniti laborum, minima dolore consectetur corporis praesentium dolorum quia quibusdam quasi neque, reprehenderit alias hic officia accusantium magnam facilis a perferendis ea facere expedita cupiditate voluptatum? Maxime excepturi voluptates perferendis velit nesciunt amet explicabo. Iure, cupiditate culpa? Nulla atque illo explicabo beatae harum tenetur soluta amet fugiat, eos provident. Eveniet saepe porro eligendi tempore incidunt molestiae, nam quae minus culpa quibusdam qui quos totam cum perferendis ducimus et consequatur facere ullam sit animi quam. Ea, laudantium neque minima sint non vitae quisquam repudiandae possimus accusamus vel saepe laboriosam sed quaerat cupiditate voluptate aliquid quas ipsam doloribus? Consequuntur, nihil labore natus blanditiis delectus molestias ipsam a quas numquam odit ab, esse accusamus nemo sint et minima amet libero deserunt deleniti itaque magni quam quibusdam autem! Deleniti hic cumque nemo perferendis similique repellendus quaerat eligendi reprehenderit repudiandae cum. Incidunt perferendis odit officiis dolorum! Minus hic quae aperiam voluptatum similique, eum eligendi maiores cumque animi delectus doloribus? Quae, officia unde! Dolores, rerum ad saepe error explicabo qui vitae magni esse quae dolor repudiandae culpa, voluptas, consequatur quas minus illo nesciunt aut eos sequi commodi voluptatem laborum facilis. Maiores facilis fugiat voluptates hic cum aliquid consequuntur vitae debitis omnis labore neque sed ad eos magni quasi, quos quas minima voluptate blanditiis! Beatae ut dicta laboriosam qui et accusantium nemo mollitia exercitationem eligendi ea architecto repellat cumque quam quos assumenda fuga, aut tempora repudiandae itaque illum quaerat eius voluptas! Libero amet ex quia qui nesciunt velit facilis laboriosam. Harum modi minima facilis magni eligendi accusantium quia minus nisi odit autem. Ad debitis voluptatum nobis! Quae porro natus dolor deserunt corrupti sapiente minus, magnam iste officia, quisquam aspernatur!</h1> -->
+                        </div>
+                    
+                    </div>
+
                     </div>
                     
                     <div class="rside-full col-11 col-lg-4">
@@ -449,5 +489,12 @@
           //seconds
         }, 0)
     }());
+
+    let a = document.getElementById('ssrrnnoo');
+    console.log(a);
+    
+    if(a==null){
+        document.getElementById('ssrrnnood').style.display='block';
+    }
 </script>
 </html>

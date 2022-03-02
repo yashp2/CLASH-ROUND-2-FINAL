@@ -88,9 +88,39 @@ rel="stylesheet"
               style="margin-left: 10px;margin-right: 10px;">Leaderboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link navvi" aria-current="page" href="{%url 'clash-home'%}"
-                style="margin-left: 10px;margin-right: 10px;">Instructions</a>
-          </li>          
+            <a class="nav-link navvi" style="margin-left: 10px;margin-right: 10px;cursor:default;" data-bs-toggle="modal" data-bs-target="#iModal">Instructions</a>
+
+                <!-- <button type="button" class="btn btn-primary">
+                    Launch demo modal
+                </button> -->
+                
+                <!-- Modal -->
+                <div class="modal fade" id="iModal" tabindex="-1" aria-labelledby="LogoutModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="LogoutModalLabel">Instructions!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center " style="text-align: left;">
+                          <ol>
+                            <li>
+                              This round comprises of 6 questions. All questions have marketing scheme +100 for right answer.
+                            </li>
+                            <li>
+                              Please play the game in full screen (Fn+F11) for better resolution.
+                            </li>
+                          </ol>
+                          
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-danger">Logout</button> -->
+                        </div>
+                    </div>
+                    </div>
+                </div>
+        </li>         
 
           <li class="nav-item ">
             <a class="nav-link navvi" style="margin-left: 10px;margin-right: 10px;cursor:pointer;" data-bs-toggle="modal" data-bs-target="#LogoutModal">Logout</a>
@@ -130,6 +160,7 @@ rel="stylesheet"
       <div class="lcontup">
         <div class="score ">
           <h5>SCORE : {{score}}</h5>
+          <!-- <h3>hello</h3> -->
         </div>
 
         <!-- <div class="rank">
@@ -458,7 +489,8 @@ Sample Output:
   }());
 </script>
 
-  <script src="https://kit.fontawesome.com/84ff0cdea4.js" crossorigin="anonymous"></script>
+  <!-- <script src="https://kit.fontawesome.com/84ff0cdea4.js" crossorigin="anonymous"></script> -->
+  <script src="https://kit.fontawesome.com/a2d549fb45.js" crossorigin="anonymous"></script>
   <!-- Footer goes here -->
   <footer class="text-center fixed-bottom footerr">
     <div class="container-fluid">

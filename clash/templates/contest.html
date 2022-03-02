@@ -96,9 +96,31 @@
                         <a class="nav-link navvi" aria-current="page" href="./leaderboard.html"
                             style="margin-left: 10px;margin-right: 10px;">Leaderboard</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link navvi" aria-current="page" href="./instructions.html"
-                            style="margin-left: 10px;margin-right: 10px;">Instructions</a>
+                    <li class="nav-item navii">
+                        <a class="nav-link navvi" style="margin-left: 10px;margin-right: 10px;cursor:default;" data-bs-toggle="modal" data-bs-target="#iModal">Instructions</a>
+
+                            <!-- <button type="button" class="btn btn-primary">
+                                Launch demo modal
+                            </button> -->
+                            
+                            <!-- Modal -->
+                            <div class="modal fade" id="iModal" tabindex="-1" aria-labelledby="LogoutModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="LogoutModalLabel">Alert!</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                    Are you sure you want to logout ?
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-danger">Logout</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                     </li>
                     <li class="nav-item navvi">
                         <a class="nav-link navvi" style="margin-left: 10px;margin-right: 10px;cursor:default;" data-bs-toggle="modal" data-bs-target="#LogoutModal">Logout</a>
@@ -135,6 +157,7 @@
 
     <!-- your code goes here -->
     <div class="containter1">
+        <!-- <h1>hello</h1> -->
         <!-- remember this row can have 4 cards but i am closing the row only after 3 cards  -->
         <div class="mycontainer">
             <div class="container">

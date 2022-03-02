@@ -16,6 +16,10 @@ html {
       height: 530px;
       overflow-y: scroll;
   }
+
+  #ssrrnnood{
+    display: none;
+  }
     body {
       min-height: 100%;
       display: flex;
