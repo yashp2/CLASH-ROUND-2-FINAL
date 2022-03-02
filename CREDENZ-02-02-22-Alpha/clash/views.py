@@ -53,13 +53,13 @@ def leaderboard(request):
         data = []
         rank=0
         counter=0
-        for user in Player.objects.order_by("-total_score"):
+        for user in Player.objects.filter(junior=tester.junior).order_by("-total_score"):
             data.append(user)
             rank+=1
             if(user==tester):
                 counter=rank
         mydata=data
-        p=Paginator(mydata,3)
+        p=Paginator(mydata,10)
         page_num=request.GET.get('page',1)
         
         try:
@@ -84,7 +84,7 @@ def buffer(request,pk):
     print("buff")
     l1 = []
     lang=""
-    for i in Submission.objects.all().filter(p_id=Player.objects.get(user=request.user), q_id=pk):
+    for i in Submission.objects.all().filter(p_id=Player.objects.get(user=request.user), q_id=pk).order_by("-time"):
         l1.append(i)
         break
     if(len(l1)==0):
@@ -113,7 +113,7 @@ def contest(request):
             status = "Not Attempted"
             l_status.append(status)
     mylist = zip(ques, l_status)
-    # print("hello")
+    print('In Contest View')
     return render(request, "trial1.html", {"mylist": mylist, "time":newtime})
 
 
@@ -125,6 +125,7 @@ def question(request, pk):
     obj = SetTime.objects.get(pk=1)
     time = obj.final_time #final time format 2022-02-08 18:30:19+05
     newtime = str(time)
+    print('In Question View')
     return render(request, "question.html", {"ques": ques,"score":tester.total_score,"time":newtime})
 
 
@@ -143,7 +144,7 @@ def mysubmission(request, pk):
     newtime = str(time)
     for i in Submission.objects.all().filter(
         p_id=Player.objects.get(user=request.user), q_id=pk
-    ):
+    ).order_by("-time"):
         l1.append(i)
         if(i.status=="RE"):
             rte+=1
@@ -157,6 +158,7 @@ def mysubmission(request, pk):
             cte+=1
         else:
             mle+=1
+    print('In MySubs')
     return render(request, "mysub.html", {"data": l1,"ac":ac,"rte":rte,"wa":wa,"tle":tle,"cte":cte,"mle":mle,"pk":pk,"time":newtime})
 
 
@@ -191,6 +193,7 @@ def san_saf_error(error,language):
 @login_required
 @timer
 def clash_sub(request, pk):
+    print('IN Clash SUB')
     print(request.POST)
     que = Question.objects.get(pk=pk)
     tester = Player.objects.get(user=request.user)
@@ -199,6 +202,7 @@ def clash_sub(request, pk):
     code = ""
     language = request.POST.get("language")
     s = ""
+    update_bool=0
     obj = SetTime.objects.get(pk=1)
     time = obj.final_time #final time format 2022-02-08 18:30:19+05
     newtime = str(time)
@@ -261,7 +265,9 @@ def clash_sub(request, pk):
                         display_error = cases[-1]
                         check = False
             scr = int((100 * correct_tcs) / tc_count)
-            views.update_score(scr, pk, tester)
+            update_bool=views.update_score(scr, pk, tester)
+            if(tester.junior==False and update_bool==False and scr<100 ):
+                scr=0
             if correct_tcs == tc_count:
                 intake = Submission(
                     q_id=que,
@@ -291,10 +297,11 @@ def clash_sub(request, pk):
                     language=language,
                 )
             intake.save()
-            que.total_submissions += 1
-            dec = (que.correct_submissions / que.total_submissions) * 100
-            que.accuracy = round(dec, 2)
-            que.save()
+            if(update_bool==0):
+                que.total_submissions += 1
+                dec = (que.correct_submissions / que.total_submissions) * 100
+                que.accuracy = round(dec, 2)
+                que.save()
             f2 = open(
                 "sandbox/submissions/{}/error.txt".format(tester.user.username), "r"
             )
@@ -322,7 +329,6 @@ def clash_sub(request, pk):
 
 
 def login_page(request):
-
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -366,31 +372,13 @@ def login_page(request):
         return render(request, "login.html")
     return render(request, "login.html")
 
-
-# @login_required
-# def logout_view(request):
-#     tester = Player.objects.get(user=request.user)
-#     data = []
-#     count = 0
-#     rank=0
-#     for user in Player.objects.order_by("-total_score"):
-#         count += 1
-#         if count < 6:
-#             data.append(user)
-#         if(tester==user):
-#             rank=count
-#         if(rank>0 and count>5):
-#             break
-#     logout(request)
-#     return render(request, "result.html", {"leaders": data,"rank":rank,"score":tester.total_score})
-
 @login_required
 def logout_view(request):
     tester = Player.objects.get(user=request.user)
     data = []
     count = 0
     rank=0
-    for user in Player.objects.order_by("-total_score"):
+    for user in Player.objects.filter(junior=tester.junior).order_by("-total_score"):
         count += 1
         if count < 7:
             data.append(user)

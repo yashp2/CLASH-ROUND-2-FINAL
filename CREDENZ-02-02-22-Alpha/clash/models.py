@@ -20,6 +20,11 @@ class Player(models.Model):
 class Question(models.Model):
     title = models.CharField(max_length=1003, null=True)
     body = models.TextField(null=True)  # text field.
+    input_format=models.TextField(null=True)
+    output_format=models.TextField(null=True)
+    constraints=models.TextField(null=True)
+    sample_input=models.TextField(null=True)
+    sample_output=models.TextField(null=True)
     correct_submissions = models.IntegerField(null=True)
     total_submissions = models.IntegerField(null=True)
     accuracy = models.FloatField(null=True)

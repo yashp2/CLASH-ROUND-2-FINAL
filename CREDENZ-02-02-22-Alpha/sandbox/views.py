@@ -173,28 +173,81 @@ def compare(name, test_output):
 
 
 def update_score(scr, pk, tester):
-    if pk == 1 and scr > tester.ques1:
-        tester.total_score -= tester.ques1
-        tester.ques1 = scr
-        tester.total_score += scr
-    elif pk == 2 and scr > tester.ques2:
-        tester.total_score -= tester.ques2
-        tester.ques2 = scr
-        tester.total_score += scr
-    elif pk == 3 and scr > tester.ques3:
-        tester.total_score -= tester.ques3
-        tester.ques3 = scr
-        tester.total_score += scr
-    elif pk == 4 and scr > tester.ques4:
-        tester.total_score -= tester.ques4
-        tester.ques4 = scr
-        tester.total_score += scr
-    elif pk == 5 and scr > tester.ques5:
-        tester.total_score -= tester.ques5
-        tester.ques5 = scr
-        tester.total_score += scr
-    elif pk == 6 and scr > tester.ques6:
-        tester.total_score -= tester.ques6
-        tester.ques6 = scr
-        tester.total_score += scr
+    if pk == 1:
+        if(tester.junior and  scr > tester.ques1):
+            tester.total_score -= tester.ques1
+            tester.ques1 = scr
+            tester.total_score += scr   
+        elif( scr ==100):
+            if(tester.ques1==100):
+                return 1
+            tester.ques1 = scr
+            tester.total_score += scr
+        return 0
+    elif pk == 2:
+        if(tester.junior and  scr > tester.ques2):
+            tester.total_score -= tester.ques2
+            tester.ques2 = scr
+            tester.total_score += scr   
+        elif( scr ==100):
+            if(tester.ques2==100):
+                return 1
+            tester.ques2 = scr
+            tester.total_score += scr
+        return 0
+    elif pk == 3:
+        if(tester.junior and  scr > tester.ques3):
+            tester.total_score -= tester.ques3
+            tester.ques3 = scr
+            tester.total_score += scr   
+        elif( scr ==100):
+            if(tester.ques3==100):
+                return 1
+            tester.ques3 = scr
+            tester.total_score += scr
+        return 0
+    elif pk == 3:
+        if(tester.junior and  scr > tester.ques3):
+            tester.total_score -= tester.ques3
+            tester.ques3 = scr
+            tester.total_score += scr   
+        elif( scr ==100):
+            if(tester.ques3==100):
+                return 1
+            tester.ques3 = scr
+            tester.total_score += scr
+        return 0
+    elif pk == 4:
+        if(tester.junior and  scr > tester.ques4):
+            tester.total_score -= tester.ques4
+            tester.ques4 = scr
+            tester.total_score += scr   
+        elif( scr ==100):
+            if(tester.ques4==100):
+                return 1
+            tester.ques4 = scr
+            tester.total_score += scr
+        return 0
+    elif pk == 5:
+        if(tester.junior and  scr > tester.ques5):
+            tester.total_score -= tester.ques5
+            tester.ques5 = scr
+            tester.total_score += scr   
+        elif( scr ==100):
+            if(tester.ques5==100):
+                return 1
+            tester.ques5 = scr
+            tester.total_score += scr
+        return 0
+    elif pk == 6:
+        if(tester.junior and  scr > tester.ques6):
+            tester.total_score -= tester.ques6
+            tester.ques6 = scr
+            tester.total_score += scr   
+        elif( scr ==100):
+            if(tester.ques6==100):
+                return 1
+            tester.ques6 = scr
+            tester.total_score += scr
+        return 0
     tester.save()

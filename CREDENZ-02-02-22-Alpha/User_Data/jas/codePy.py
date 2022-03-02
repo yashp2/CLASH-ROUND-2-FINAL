@@ -37,4 +37,4 @@ def seccomp_filter():
 
 seccomp_filter()
 
-print(1/0)
+print(75)

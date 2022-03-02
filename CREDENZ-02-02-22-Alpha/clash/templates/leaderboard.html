@@ -336,11 +336,12 @@
   
           //do something later when date is reached
           if (distance < 0) {
-            document.getElementById("headline").innerText = "";
-            document.getElementById("countdown").style.display = "";
-            document.getElementById("content").style.display = "";
+            document.getElementById("hours").innerText = 0;
+            document.getElementById("minutes").innerText = 0;
+            document.getElementById("seconds").innerText = 0;
             clearInterval(x);
-            location.href="{%url 'logout'%}";
+            window.location.reload();
+            // location.href="{%url 'logout'%}";
           }
           //seconds
         }, 0)
