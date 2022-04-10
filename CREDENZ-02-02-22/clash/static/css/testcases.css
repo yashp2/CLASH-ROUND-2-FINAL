@@ -1,0 +1,303 @@
+body {
+  height: 100vh;
+  width: 100%;
+  background-color: #131313;
+  word-break: keep-all;
+}
+/* img{
+    color: greenyellow;
+    height: 10px;
+    width: auto;
+} */
+.badge {
+  color: greenyellow;
+}
+
+#status,
+#score,
+#tc,
+#tc2 {
+  white-space: nowrap;
+}
+
+textarea {
+  resize: none;
+}
+#comment {
+  background-color: #222222;
+  border-color: #222222;
+  border-top-color: white;
+}
+/* .navbar{
+    background-color: #1f2833!important;
+    border-color: #222222;
+}
+#footer{
+    background-color: #1f2833!important;
+} */
+/* .navbar-light .navbar-brand{
+    color: white;
+}
+.nav-link{
+    color: white;
+} */
+
+.btn {
+  background-color: #293b5f !important;
+  border-color: #293b5f;
+}
+.btn:hover {
+  background-color: #1d273b;
+  color: #ffffff;
+}
+
+#console,
+#status,
+#score,
+.btn {
+  box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;
+}
+
+#console {
+  background-color: #222222 !important;
+}
+
+.card-header {
+  background-color: #222222;
+}
+#tc,
+#tc2 {
+  box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;
+}
+#tc:hover,
+#tc2:hover,
+#status:hover,
+#score:hover {
+  transform: scale(1.1);
+}
+#status,
+#score {
+  background-color: #222222;
+}
+.height-card {
+  height: 73px;
+}
+
+.abtn {
+  margin-top: 67px;
+}
+
+.console {
+  height: 250px;
+}
+
+.footer-text {
+  color: white;
+}
+
+.glow {
+  font-size: 30px;
+  color: white;
+  text-align: center;
+}
+
+#tc,
+#tc2 {
+  background-color: #222222;
+}
+
+.glow2 {
+  font-size: 30px;
+  color: white;
+  text-align: center;
+}
+/*  
+  #tc{
+    border-color: lightgreen;  
+    transform: translateY(0);
+    box-shadow:
+      inset 0 0 30px whitesmoke,
+      inset 10px 0 20px lightgreen,
+      inset -10px 0 20px green,
+      inset 10px 0 50px lightgreen,
+      inset -10px 0 50px green,
+      0 0 10px #fff,
+      -10px 0 20px green,
+      10px 0 20px lightgreen; 
+  }
+  #tc2{
+      border-color: lightcoral;
+    transform: translateY(0);
+    box-shadow:
+      inset 0 0 30px whitesmoke,
+      inset 10px 0 20px lightcoral,
+      inset -10px 0 20px red,
+      inset 10px 0 50px lightcoral,
+      inset -10px 0 50px red,
+      0 0 10px #fff,
+      -10px 0 20px red,
+      10px 0 20px lightcoral;
+  } */
+
+.up {
+  color: lightgreen;
+}
+
+.down {
+  color: lightcoral;
+}
+
+.fa-thumbs-down:before,
+.fa-thumbs-up:before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.test-cases {
+  margin-top: 25px;
+  width: 94%;
+}
+
+.padup {
+  margin-bottom: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.padown {
+  margin-top: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+@media (max-width: 450px) {
+  body {
+    width: fit-content;
+  }
+  .col-md-6 {
+    margin-top: -395px;
+  }
+
+  .mob-status {
+    margin-top: 220px;
+    padding-right: 42%;
+    margin-left: -9.5%;
+  }
+
+  .console {
+    height: 220px;
+  }
+
+  .abtn {
+    width: 80%;
+  }
+
+  .mob-score {
+    margin-top: -167.7999999999px;
+    padding-left: 42%;
+    padding-right: 0.5%;
+  }
+
+  .mob-retry {
+    margin-top: -180px;
+  }
+
+  .mob-retry button.w-25 {
+    width: 180px !important;
+  }
+
+  .mob-row .col {
+    display: -webkit-box;
+  }
+
+  .mob-cases {
+    margin-top: 140px !important;
+    width: 70%;
+  }
+
+  .test-cases {
+    margin-left: 0px;
+  }
+
+  .padup {
+    margin-bottom: 25px;
+    margin-left: 5px;
+    margin-right: 12px;
+  }
+
+  .padown {
+    margin-top: 0px;
+    margin-left: 6px;
+    margin-right: 5px;
+  }
+}
+
+@media (min-width: 450px) and (max-width: 769px) {
+  body {
+    width: fit-content;
+  }
+  .col-md-6 {
+    margin-top: -400px;
+  }
+
+  .mob-status {
+    margin-top: 220px;
+    padding-right: 41%;
+    margin-left: -6%;
+  }
+
+  .console {
+    height: 220px;
+  }
+
+  .abtn {
+    width: 80%;
+  }
+
+  .mob-score {
+    margin-top: -171.7999999999px;
+    padding-left: 36%;
+    padding-right: 6.5%;
+    margin-left: 9%;
+  }
+
+  .mob-retry {
+    margin-top: -187px;
+  }
+
+  .mob-retry button.w-25 {
+    width: 180px !important;
+  }
+
+  .mob-row .col {
+    display: -webkit-box;
+  }
+
+  .mob-cases {
+    margin-top: 150px !important;
+    width: 70%;
+  }
+
+  .mob-row {
+    margin-right: -10px;
+  }
+
+  .test-cases {
+    margin-left: 0px;
+  }
+
+  .padup {
+    margin-bottom: 25px;
+    margin-left: 13px;
+    margin-right: 12px;
+    width: 336px;
+  }
+
+  .padown {
+    margin-top: 0px;
+    margin-left: 6px;
+    margin-right: 5px;
+    width: 336px;
+  }
+}

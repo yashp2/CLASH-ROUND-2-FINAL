@@ -1,0 +1,161 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  text-align: center;
+  background-color: #131313;
+  color: white;
+  overflow-x: hidden;
+  margin-bottom: 50px; /* Margin bottom by footer height */
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 65px; /* Set the fixed height of the footer here */
+  background-color: #f5f5f5;
+}
+
+.navbar {
+  background-color: #1f2833;
+}
+
+.maincard {
+  /* margin-top: 30%; */
+  /* margin-left: 10%; */
+  width: 25%;
+  text-align: center;
+  height: 300px;
+  border-radius: 25px;
+  box-shadow: 2px 2px 10px #000000;
+  background-color: #222222;
+  font-size: x-large;
+  border: 2px solid #000000;
+}
+
+.rank {
+  background-color: #222222;
+  color: white;
+  border: 1px solid #000000;
+  font-size: 15px;
+}
+
+.score {
+  background-color: #222222;
+  color: white;
+  border: 1px solid #000000;
+  font-size: 15px;
+}
+.page-link {
+  background-color: #293b5f;
+  color: rgb(255, 255, 255);
+}
+.circle {
+  background-color: #293b5f;
+  border: 1px solid #000000;
+  border-radius: 50px;
+  padding: 10px;
+  width: 70px;
+  height: 70px;
+  /* margin-left: 40%; */
+  font-size: xx-large;
+}
+
+.first {
+  margin-top: 5px;
+  background-color: #222222;
+}
+
+.table {
+  min-width: fit-content;
+  width: 100%;
+  margin-top: 35px;
+  margin-right: 10px;
+  border: 2px solid #000000;
+  box-shadow: 0px 5px 20px 2px #000000;
+  background-color: #222222;
+  color: white;
+  font-size: 15px;
+  margin-right: 20%;
+}
+
+.pagination {
+  justify-content: center;
+  color: white;
+}
+
+.footer {
+  background-color: #1f2833;
+}
+
+.maincnt {
+  height: calc(100vh - 112px);
+  display: flex;
+  flex-direction: row;
+}
+
+.maincard{
+  width: calc(25% - 40px);
+  margin: 20px;
+  margin-top: 45px;
+}
+
+.tabdiv{
+  width: calc(75% - 20px);
+  margin: 20px;
+}
+
+
+@media (max-width:1092px) {
+
+  .maincard{
+    width: 40%;
+  }
+
+  .tabdiv{
+    width: 60%;
+  }
+  .maincnt{
+    height: fit-content;
+  }
+}
+
+@media (max-width:950px) {
+
+  .maincnt{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .maincard{
+    width: 300px;
+    height: 300px;
+  }
+
+  .tabdiv{
+    width: 100%;
+  }
+
+  .maincnt{
+    height: fit-content;
+  }
+}
+
+@media (max-width:450px) {
+
+  .tabdiv{
+    margin: 0px;
+    padding: 0px;
+  }
+  .table,.tdiv{
+    margin: 0px;
+    padding: 0px;
+    font-size: 12px;
+  }
+
+  .maincnt{
+    height: fit-content;
+  }
+}

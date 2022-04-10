@@ -1,0 +1,266 @@
+<!-- {% extends 'base.html' %}
+{% block body %}
+{%if result %}
+    {{result}}
+{% else %}
+    {{result}}
+{% endif %}
+<p>
+
+    {{error}}
+
+</p>
+
+<br>
+<table>
+    		{% for test in testcase %}
+		<tr>
+			<th>Case {{forloop.counter}}</th>
+		</tr>
+
+		<tr>
+			<td>{{test}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{%endblock%} -->
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="Your Name" content="Your page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="{%static 'css/coding.css'%}" />
+    <link rel="stylesheet" href="{%static 'css/testcases.css'%}" />
+  </head>
+
+  <body>
+    <!-- Navbar goes here -->
+    <nav class="navbar navbar-expand-lg navbarr">
+      <div class="container-fluid">
+        <a class="navbar-brand navvi" href="#" style="padding: 0px"
+          ><img src="../img/clashwhite.png" alt="Clash Logo" height="30px"
+        /></a>
+        <a class="navbar-brand navvi timer" href="#" style="margin-left: 20px"
+          >TIMER
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars" style="color: white"></i>
+        </button>
+        <div
+          class="collapse navbar-collapse stroke"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link navvi" style="margin-left: 10px;margin-right: 10px;cursor:default;" data-bs-toggle="modal" data-bs-target="#iModal">Instructions</a>
+  
+                  <!-- <button type="button" class="btn btn-primary">
+                      Launch demo modal
+                  </button> -->
+                  
+                  <!-- Modal -->
+                  <div class="modal fade" id="iModal" tabindex="-1" aria-labelledby="LogoutModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                          <h5 class="modal-title" id="LogoutModalLabel">Instructions!</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body text-center " style="text-align: left;">
+                            <ol>
+                              <li>
+                                This round comprises of 6 questions. All questions have marketing scheme +100 for right answer.
+                              </li>
+                              <li>
+                                Please play the game in full screen (Fn+F11) for better resolution.
+                              </li>
+                            </ol>
+                            
+                          </div>
+                          <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <!-- <button type="button" class="btn btn-danger">Logout</button> -->
+                          </div>
+                      </div>
+                      </div>
+                  </div>
+          </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active navvi"
+                aria-current="page"
+                href="./questionHubPage.html"
+                style="margin-left: 10px; margin-right: 10px"
+                >Question Hub</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link navvi"
+                aria-current="page"
+                href="./leaderboard.html"
+                style="margin-left: 10px; margin-right: 10px"
+                >Leaderboard</a
+              >
+            </li>
+            <li class="nav-item navvi">
+              <a
+                class="nav-link navvi"
+                style="margin-left: 10px; margin-right: 10px; cursor: pointer"
+                data-bs-toggle="modal"
+                data-bs-target="#LogoutModal"
+                >Logout</a
+              >
+
+              <!-- <button type="button" class="btn btn-primary">
+                Launch demo modal
+              </button> -->
+
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="LogoutModal"
+                tabindex="-1"
+                aria-labelledby="LogoutModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="LogoutModalLabel">Alert!</h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body text-center">
+                      Are you sure you want to logout ?
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+                      <button type="button" class="btn btn-danger">
+                        Logout
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <a
+          class="navbar-brand navvi pisblogo"
+          href="#"
+          style="padding: 0px; margin-left: 20px"
+          ><img src="../img/pisblogo.png" alt="Clash Logo" height="30px"
+        /></a>
+      </div>
+    </nav>
+
+    <!-- your code goes here -->
+    <div class="container-fluid mt-3">
+      <div class="row text-center">
+        <div class="col-md-3 mob-status">
+          <div class="card text-dark abtn mx-5" id="status">
+            <div class="card-body text-white">
+              <h4>Status</h4>
+              <h4>AC</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card console" id="console">
+            <div class="card-header text-white"><strong>CONSOLE</strong></div>
+            <textarea
+              class="form-control text-white card-body"
+              rows="5"
+              id="comment"
+              name="text"
+              readonly
+            ></textarea>
+          </div>
+        </div>
+        <div class="col-md-3 mob-score">
+          <div class="card text-dark abtn mx-5" id="score">
+            <div class="card-body text-white">
+              <h4>Score</h4>
+              <h4>100</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mob-retry">
+        <button type="button" class="btn text-white mt-4 w-25" href="{url {coding}}">Retry</button>
+      </div>
+    </div>
+
+    <div class="container-fluid test-cases mob-cases">
+      <div class="row text-center mob-row mb-3">
+        <div class="col">
+		{% for test in testcase %}
+          <div class="card height-card padup" id="tc">
+            <div class="card-body">
+              <h5 class="glow">
+                Test {{forloop.counter}}
+
+                
+                <i class="fa fa-close" style="font-size: 40px; color: red"></i>
+                <h1>{{test}}</h1>
+              </h5>
+            </div>
+          </div>
+		  {% endfor %}
+
+		  
+
+
+      </div>
+    </div>
+  </div>
+
+    <!-- Footer goes here -->
+  </body>
+  <div class="clear"></div>
+  <footer class="text-center fixed-bottom footerr">
+    <div class="container-fluid">
+      <div class="footer-text pt-3 pb-3">PISB <span>&copy</span></div>
+    </div>
+  </footer>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://kit.fontawesome.com/a2d549fb45.js" crossorigin="anonymous"></script>
+</html>

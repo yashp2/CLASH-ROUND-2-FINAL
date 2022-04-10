@@ -1,0 +1,147 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* ---- reset ---- */ body{ margin:0; font:normal 75% Arial, Helvetica, sans-serif; }
+        canvas{ display: block; vertical-align: bottom; } /* ---- particles.js container ---- */ #particles-js{ position:absolute; width: 100%; height: calc(100vh - 112px); background-color: #293b5f; background-image: url(""); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; } /* ---- stats.js ---- */ 
+        .count-particles{ background: #000022; position: absolute; top: 48px; left: 0; width: 80px; color: #13E8E9; font-size: .8em; text-align: left; text-indent: 4px; line-height: 14px; padding-bottom: 2px; font-family: Helvetica, Arial, sans-serif; font-weight: bold; } 
+        .js-count-particles{ font-size: 1.1em; } #stats, 
+        .count-particles{ -webkit-user-select: none; margin-top: 5px; margin-left: 5px; } #stats{ border-radius: 3px 3px 0 0; overflow: hidden; } 
+        .count-particles{ border-radius: 0 0 3px 3px; }
+        *{
+            z-index: 1;
+        }
+        .maindiv{
+            position: fixed;
+            top:calc(50vh - 100px);
+            background-color: transparent; 
+            width: 50%;left: 25%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        @media (max-width :890px ){
+            .maindiv{
+                width: calc(100% - 50px);
+                padding: 35px;
+                left: 0px;
+                right: 50px;
+            }
+        }
+    </style>
+</head>
+<!-- <div class="footer" style="height: 56px;background-color: #1f2833;"></div> -->
+<nav class="navbar navbar-expand-lg navbarr" style="height: 56px;background-color: #1f2833;">
+    <div class="container-fluid">
+      <a class="navbar-brand navvi" href="#" style="padding: 0px;"><img src="{% static 'img/clashwhite.png' %}" alt="Clash Logo"
+          height="30px" style="margin-top:5px; margin-bottom:12px;"></a>
+      <a class="navbar-brand navvi pisblogo" href="#" style="padding: 0px; margin-left: 20px;float: right;"><img src="{% static 'img/pisblogo.png' %}"
+          alt="PISB Logo" height="30px"  style="margin-top:5px; margin-bottom:12px;"></a>
+    </div>
+  </nav>
+<body>
+    <!-- particles.js container --> <div id="particles-js" >
+        <!-- <div class="text-center maindiv" style="display: flex;align-self: center;">
+            <h1>
+                <div class="timer_container">
+                    <div class="myText newLine" id="countdown">
+                        <span id="days" class="timeritems"></span> :
+                        <span id="hours" class="timeritems"></span> :
+                        <span id="minutes" class="timeritems"></span> :
+                        <span id="seconds" class="timeritems"></span>
+                    </div>
+                </div>      
+            </h1>
+            <br>
+            <br><br>
+            <br>
+            <hr>
+            <hr>
+            <hr>
+    </div> -->
+    <!-- <h1 style="z-index: 10;">
+        Hello
+    </h1> -->
+
+    <div style="display: flex;text-align: center;" class="maindiv">
+        <h1 style="font-size: 45px;color: white;">
+            Contest will start in..
+        </h1>
+        <h1 style="font-size: 35px;color: white;">
+            <div class="timer_container">
+                <div class="myText newLine" id="countdown">
+                    <span id="days" class="timeritems"></span> :
+                    <span id="hours" class="timeritems"></span> :
+                    <span id="minutes" class="timeritems"></span> :
+                    <span id="seconds" class="timeritems"></span>
+                </div>
+            </div>      
+        </h1>
+        <!-- {{time}} -->
+    </div>
+    </div> <!-- stats - count particles --> 
+    <div class="count-particles" style="display: none;"> <span class="js-count-particles">--</span> particles </div> 
+    <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
+
+     <!-- <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> stats.js lib  -->
+     <script src="{%static 'js/particles.min.js'%}"></script>
+    <!-- <script src="http://threejs.org/examples/js/libs/stats.min.js"></script> -->
+    <script src="{%static 'js/stats.js'%}"></script>
+    <script>
+        particlesJS("particles-js", {"particles":{"number":{"value":80,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.5,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
+        // var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
+    </script>
+<div style="height: 56px; background-color: #1f2833; position: fixed;bottom: 0; width: 100%;display: flex;
+align-items: center;justify-content: center;">
+<div class="footer-text pt-3 pb-3" style="color: white;font-size: 15px;">PISB <span>&copy</span></div>
+</div>
+<!-- <script src="{%static 'js/timer.js'%}" type="text/javascript" charset="utf-8"></script> -->
+<script>
+      //Timer
+  (function () {
+    const second = 1000,
+          minute = second * 60,
+          hour = minute * 60,
+          day = hour * 24,
+          month = day *30;
+  
+  
+    
+    // const countDown = new Date('February 29, 2022 00:01:02').getTime(),
+    const countDown = new Date('{{time}}').getTime(),
+        x = setInterval(function() {    
+  
+          const now = new Date().getTime(),
+          distance = countDown - now;
+  
+            document.getElementById("days").innerText = Math.floor(distance / (day)),
+            document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+            document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+            document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+            //console.log(distance);
+          //do something later when date is reached
+           if (distance < 0) {
+            // console.log("hello");
+            document.getElementById("days").innerText = 0,
+            document.getElementById("hours").innerText = 0,
+            document.getElementById("minutes").innerText = 0,
+            document.getElementById("seconds").innerText = 0;
+            location.href="{%url 'clash-home'%}";
+           }
+          //seconds
+        }, 0)
+    }());
+  
+</script>
+<script src="https://kit.fontawesome.com/a2d549fb45.js" crossorigin="anonymous"></script>
+</body>
+
+
+</div>
+</html>

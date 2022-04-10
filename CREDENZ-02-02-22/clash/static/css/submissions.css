@@ -1,0 +1,121 @@
+html {
+      height: 100%;
+    }
+    ::-webkit-scrollbar{
+      width: 10px;
+  }
+  ::-webkit-scrollbar-track{
+      border-radius: 5px;
+      box-shadow: inset 0 0 10px #131313;
+  }
+  ::-webkit-scrollbar-thumb{
+      border-radius: 5px;
+      background-color: rgba(255,255,255,0.45) ;
+  }
+  .scrollable{
+      height: 530px;
+      overflow-y: scroll;
+  }
+
+  #ssrrnnood{
+    display: none;
+  }
+    body {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      background-color: #131313 !important;
+      overflow-x: hidden;
+    }
+    .container-1 {
+      /* margin-left: 20px; */
+      margin: 20px;
+      margin-bottom: 60px;
+    }
+    .circle-dot {
+      border-radius: 50%;
+      height: 17px;
+      width: 17px;
+    }
+    .table-1 {
+      box-shadow: 4px 4px #000000;
+      background-color: #222222 !important;
+      color: rgba(255,255,255,0.45) !important;
+    }
+    .main-table-1 {
+      color: white !important;
+    }
+    .rside {
+      margin-bottom: 10px;
+    }
+    .status-box {
+      padding-bottom: 11px;
+      box-shadow: 4px 4px #000000;
+      background-color: #222222;
+    }
+    .status-box-1 {
+      box-shadow: 4px 4px #000000;
+      background-color: #222222;
+    }
+    .status-box-tab-1 {
+      padding: 8px;
+      background-color: #222222;
+    }
+    .nav-item-1 {
+      /* background-color: #32de84 !important; */
+      background-color: #222222 !important;
+      color: white !important;
+    }
+    .pie-custom{
+      width: 340px !important;
+      height: 170px !important;
+      margin-bottom: 40px !important;
+      margin-top: 40px !important;
+    }
+    .rside-line {
+      margin-top: 17px;
+     height: 3px !important;
+    }
+    .rside-head {
+        /* font-size: 1.1rem !important;
+        font-weight: bold; */
+      margin-top: 15px;
+    }
+    .percentage-done {
+      font-size: 3rem;
+      color: green;
+      text-align: center;
+      margin-top: 0px;
+    }
+    .my-progress {
+      margin-top: 15px;
+    }
+    .goto-prob {
+      padding: 8px;
+      margin-bottom: 12px;
+    }
+    .main-table {
+      padding-top: 20px !important;
+      padding-bottom: 20px !important;
+    }
+    .nav-link-1 {
+      margin-left: 5px;
+    }
+    .nav-link-1:hover {
+      background-color: #222222 !important;
+    }
+    .rside-full {
+      padding-right: 20px !important;
+    }
+    @media (max-width: 400px) {
+      .rside-full {
+        margin: 10px auto;
+        padding-right: 12px !important;
+      }
+    }
+    @media (max-width: 768px) {
+      .rside-full {
+        margin: 10px auto;
+        padding-right: 12px !important;
+      }
+    }  
