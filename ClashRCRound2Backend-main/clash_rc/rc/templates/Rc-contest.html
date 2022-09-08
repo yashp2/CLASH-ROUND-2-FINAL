@@ -1,0 +1,37 @@
+{% extends 'Rc-Home.html' %}
+{% block body %}
+<style>
+		table, th, td{
+			border:  1px solid black;
+			border-collapse: collapse;
+		}
+</style>
+	<h1><center>Questions</center></h1>
+
+	<table>
+				<tr>
+			<th>Sr.No)</th>
+			<th>Title</th>
+			<th>Accuracy</th>
+			<th>Total Submissions</th>
+			<th>Status</th>
+			<th></th>
+		</tr>
+		<tr>
+		{% for result,stat in mylist %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td>{{result.title}}</td>
+			<td>{{result.accuracy}}</td>
+			<td>{{result.correct_submissions}}</td>
+			<td>{{stat}}</td>
+                <form action="{%url 'rc-question' result.id%}" method='post'>
+            {%csrf_token%}
+			<td><button type="submit">Attempt</button></td>
+
+                    </form>
+		</tr>
+		{% endfor %}
+	</table>
+	<br>
+{%endblock%}
